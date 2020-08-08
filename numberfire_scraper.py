@@ -9,5 +9,17 @@ def scrape():
     df = list_of_dfs[3]
     ##### add transformation here
     df.to_csv('projections.csv')
+    print("numberfire projections saved.")
     return df 
+
+def get_dk_salaries():
+    # have user input DK export URL for a slate, and download the .csv
+    url = input("Enter the Draftkings export URL for your slate: ")
+    df = pd.read_csv(url)
+    df.to_csv('dk_salaries.csv')
+    print("Draftkings salaries saved.")
+    return df
+
+scrape()
+get_dk_salaries()
 
