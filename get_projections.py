@@ -1,29 +1,67 @@
-"""Scrape numberfire NBA projections, transform into same .csv style as 
-   Draftkings export, and use pydfs-lineup-optimizer to generate lineups"""
+"""get the DraftKings export sheet for a given slate.
+   get projections from various sites and save them in .csv."""
 
 import pandas as pd
-from pydfs_lineup_optimizer import get_optimizer, Site, Sport
+
+def get_dk_salaries():
+    # have user input DK export URL for a slate, and download the .csv
+    url = input("Enter the DraftKings export URL for your slate: ")
+    df = pd.read_csv(url)
+    df.to_csv('dk_salaries.csv')
+    print("DraftKings salaries saved.")
+    return df
 
 def get_numberfire_projections():
-    # get projections from numberfire
-    list_of_dfs = pd.read_html('https://www.numberfire.com/nba/daily-fantasy/daily-basketball-projections')
-    df = list_of_dfs[3]
-    ##### add transformation here
-    df.to_csv('projections.csv')
+    # think this is getting fanduel projections...
+    # guess we need to calculate from DK scoring later on
+    list_of_tables = pd.read_html('https://www.numberfire.com/nba/daily-fantasy/daily-basketball-projections')
+    df = list_of_tables[3]
+    for row in range(1,len(df.index)): # separate names out of field
+        name_field = df.iloc[row,1]
+        split_field = str(name_field).split()
+        # remove OUT and GTD statuses
+        statuses = ['OUT', 'GTD']
+        [split_field.remove(status) for status in split_field if status in statuses]
+        #### calculate DK points here
+        # grab names of various lengths
+        if (len(split_field) == 10):
+            name = f"{split_field[2]} {split_field[3]}"
+        elif (len(split_field) == 11):
+            name = f"{split_field[2]} {split_field[3]} {split_field[4]}"
+        elif (len(split_field) == 12):
+            name = f"{split_field[3]} {split_field[4]} {split_field[5]}"
+        elif (len(split_field) == 14):
+            name = f"{split_field[4]} {split_field[5]} {split_field[6]} {split_field[7]}"
+        df.iloc[row,1] = name
+    # save Player and FP columns into .csv
+    players_and_points = df.iloc[:,[1,2]]
+    players_and_points.to_csv('numberfire_projections.csv')
     print("numberfire projections saved.")
-    return df 
+    return players_and_points
+
+def get_lineups_projections():
+    # pd.read_html returns empty. could be good practice for BeautifulSoup
+    pass
+
+def get_rotoballer_projections():
+    pass
+
+def get_fantasyfuel_projections():
+    pass
 
 def get_sabersim_projections():
     # get sabersim free trial and check out the format of their projections
     pass
 
-def get_dk_salaries():
-    # have user input DK export URL for a slate, and download the .csv
-    url = input("Enter the Draftkings export URL for your slate: ")
-    df = pd.read_csv(url)
-    df.to_csv('dk_salaries.csv')
-    print("Draftkings salaries saved.")
-    return df
+def get_rotogrinders_projections():
+    pass 
+
+def get_fantasylabs_projections():
+    pass
+
+#get_dk_salaries()
+get_numberfire_projections()
+
 
 
 
