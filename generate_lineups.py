@@ -3,10 +3,6 @@
 import pandas as pd
 from pydfs_lineup_optimizer import get_optimizer, Site, Sport
 
-def join_projections_to_DKsheet(site):
-    # replace AvgPoints column with projections
-    pass
-
 def generate_lineups():
     # already have dk_salaries.csv saved for test purposes
     n = input("Enter the number of lineups you want: ")
@@ -24,6 +20,10 @@ def generate_lineups():
     df.to_csv('lineups.csv')
     print(f"{n} lineups have been saved.")
     return df
+
+def calculate_exposure():
+    # return pd.DataFrame of players and the % of lineups they are ins
+    pass
 
 # get sabersim projections and join them to DK sheet AvgPointsPerGame col
   # sabersim ownership projections seem terrible?
