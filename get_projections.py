@@ -49,8 +49,16 @@ def get_rotoballer_projections():
     df['FPts'] = df['▴'] * df['Proj / $1K.1'] / 1000
     players_and_points = df[['Player, POS', 'FPts']]
     players_and_points.columns = ['Player', 'FPts']
+    # once we can join projections to DK sheet and get exposure, don't need to save anymore
     players_and_points.to_csv('rotoballers_full.csv')
     print("Rotoballers projections saved.")
+    return players_and_points
+
+def get_sabersim_projections():
+    # import .csv and then 
+    df = pd.read_csv('rotoballers_full.csv')
+    # take player name and FPts columns, then return
+    print("Sabersim projections saved.") 
     return players_and_points
 
 def join_projections_to_DK(site):
