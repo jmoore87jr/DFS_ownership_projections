@@ -14,7 +14,7 @@ def get_dk_salaries():
 
 def get_numberfire_projections():
     # think this is getting fanduel projections...
-    # guess we need to calculate from DK scoring later on
+    # we need to change this by hand because 3pm isn't in the sheet
     ##list_of_tables = pd.read_html('https://www.numberfire.com/nba/daily-fantasy/daily-basketball-projections')
     ##df = list_of_tables[3]
     df = pd.read_csv('numberfire_full.csv')
@@ -24,7 +24,6 @@ def get_numberfire_projections():
         # remove OUT and GTD statuses
         statuses = ['OUT', 'GTD']
         [split_field.remove(status) for status in split_field if status in statuses]
-        #### calculate DK points here
         # grab player names of various lengths
         if (len(split_field) == 10):
             name = f"{split_field[2]} {split_field[3]}"
@@ -52,38 +51,37 @@ def get_rotoballer_projections():
     return players_and_points
 
 def get_sabersim_projections():
-    # import .csv and then 
-    df = pd.read_csv('rotoballers_full.csv')
-    # take player name and FPts columns, then return
-    print("Sabersim projections saved.") 
+    df = pd.read_csv('sabersim_full.csv')
+    players_and_points = df[['Name', 'dk_points']]
+    players_and_points.columns = ['Player', 'FPts']
     return players_and_points
 
-def merge_projections_to_DK():
+def merge_projections_to_DK(site):
     # replace AvgPoints column with projections
     ## dk_sheet = get_dk_salaries()
-    site = input("Enter site to use: ")
+    #site = input("Enter site to use: ")
     dk_sheet = pd.read_csv('dk_salaries.csv') ## delete this and use get_dk_salaries for final script
     get_func = globals()["get_" + site + "_projections"]
     sheet = get_func()
     new_sheet = pd.merge(dk_sheet, sheet, left_on='Name', right_on='Player')
     new_sheet['AvgPointsPerGame'] = new_sheet['FPts']
     new_sheet.drop(['Player', 'FPts'], axis=1, inplace=True)
-    new_sheet.to_csv(f'{site}_projections.csv')
-    print(f"{site} projections saved.")
     return new_sheet 
 
-def main():
-    dk_sheet = get_dk_salaries()
-    p1 = get_sabersim_projections()
-    p2 = get_rotoballer_projections()
-    p3 = get_numberfire_projections()
-    # merge dk_sheet with p1, save .csv, then feed it to pydfs-lineup-optimizer
-    # calculate_exposure() for each player
-    # repeat with p2 and p3
-    # average the exposures
-    # return ownership projections
+def format_and_save():
+    #get_dk_salaries()
+    # input site names separated by comma
+    sites = input("Which sites are being formatted? ").replace(',', '').split()
+    print(type(sites))
+    print(sites)
+    for site in sites:
+        sheet = merge_projections_to_DK(site)
+        sheet.to_csv(f'{site}_projections.csv')
+        print(f"{site} projections saved.")
 
-merge_projections_to_DK()
+format_and_save()
 
+
+# change site_full.csv to site_raw.csv
 
 

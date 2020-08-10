@@ -4,7 +4,6 @@ import pandas as pd
 from pydfs_lineup_optimizer import get_optimizer, Site, Sport
 
 def generate_lineups():
-    # already have dk_salaries.csv saved for test purposes
     site = input("Enter the site: ")
     n = input("Enter the number of lineups you want: ")
     optimizer = get_optimizer(Site.DRAFTKINGS, Sport.BASKETBALL)
@@ -21,11 +20,17 @@ def generate_lineups():
     df.to_csv(f'{site}_lineups.csv')
     print(f"{n} lineups have been saved.")
     # lineup outputs names with position and team
-    # need to separate out just the names
+    # do I need to separate out names? 
+    # I guess not since they'll be the same on all 3 sheets
+    # At the end we need to deal with the DK upload sheet but that's later
+    # and can maybe just be done in sheets. we'll see.
     return df
 
 def calculate_exposure():
     # return pd.DataFrame of players and the % of lineups they are ins
+    pass
+
+def main():
     pass
 
 # get sabersim projections and join them to DK sheet AvgPointsPerGame col
