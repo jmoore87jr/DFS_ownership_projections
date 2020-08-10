@@ -15,8 +15,9 @@ def get_dk_salaries():
 def get_numberfire_projections():
     # think this is getting fanduel projections...
     # guess we need to calculate from DK scoring later on
-    list_of_tables = pd.read_html('https://www.numberfire.com/nba/daily-fantasy/daily-basketball-projections')
-    df = list_of_tables[3]
+    ##list_of_tables = pd.read_html('https://www.numberfire.com/nba/daily-fantasy/daily-basketball-projections')
+    ##df = list_of_tables[3]
+    df = pd.read_csv('numberfire_full.csv')
     for row in range(1,len(df.index)): # separate names out of 2nd column
         name_field = df.iloc[row,1]
         split_field = str(name_field).split()
@@ -35,8 +36,7 @@ def get_numberfire_projections():
             name = f"{split_field[4]} {split_field[5]} {split_field[6]} {split_field[7]}"
         df.iloc[row,1] = name
     players_and_points = df.iloc[:,[1,2]]
-    players_and_points.to_csv('numberfire_projections.csv')
-    print("numberfire projections saved.")
+    players_and_points.columns = ['Player', 'FPts']
     return players_and_points
     
 
@@ -58,9 +58,10 @@ def get_sabersim_projections():
     print("Sabersim projections saved.") 
     return players_and_points
 
-def merge_projections_to_DK(site):
+def merge_projections_to_DK():
     # replace AvgPoints column with projections
     ## dk_sheet = get_dk_salaries()
+    site = input("Enter site to use: ")
     dk_sheet = pd.read_csv('dk_salaries.csv') ## delete this and use get_dk_salaries for final script
     if site == 'rotoballer':
         rotoballer_sheet = get_rotoballer_projections()
@@ -69,6 +70,15 @@ def merge_projections_to_DK(site):
         new_sheet.drop(['Player', 'FPts'], axis=1, inplace=True)
         new_sheet.to_csv('rotoballer_projections.csv')
         print("Rotoballer projections saved.")
+        return new_sheet 
+    # I can merge these together with {site}, no need for if statements
+    if site == 'numberfire':
+        numberfire_sheet = get_numberfire_projections()
+        new_sheet = pd.merge(dk_sheet, numberfire_sheet, left_on='Name', right_on='Player')
+        new_sheet['AvgPointsPerGame'] = new_sheet['FPts']
+        new_sheet.drop(['Player', 'FPts'], axis=1, inplace=True)
+        new_sheet.to_csv('numberfire_projections.csv')
+        print("numberfire projections saved.")
         return new_sheet 
 
 def main():
@@ -82,7 +92,7 @@ def main():
     # average the exposures
     # return ownership projections
 
-merge_projections_to_DK('rotoballer')
+merge_projections_to_DK()
 
 
 

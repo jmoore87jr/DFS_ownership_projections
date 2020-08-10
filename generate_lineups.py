@@ -5,9 +5,10 @@ from pydfs_lineup_optimizer import get_optimizer, Site, Sport
 
 def generate_lineups():
     # already have dk_salaries.csv saved for test purposes
+    site = input("Enter the site: ")
     n = input("Enter the number of lineups you want: ")
     optimizer = get_optimizer(Site.DRAFTKINGS, Sport.BASKETBALL)
-    optimizer.load_players_from_csv('rotoballer_projections.csv')
+    optimizer.load_players_from_csv(f'{site}_projections.csv')
     lineups = []
     headers = ['PG', 'SG', 'SF', 'PF', 'C', 'G', 'F', 'UTIL', 'Pts', 'Salary']
     for lineup in optimizer.optimize(n=int(n)):
@@ -17,8 +18,10 @@ def generate_lineups():
         lineup_list.append(lineup.salary_costs)
         lineups.append(lineup_list)
     df = pd.DataFrame(lineups, columns=headers)
-    df.to_csv('lineups.csv')
+    df.to_csv(f'{site}_lineups.csv')
     print(f"{n} lineups have been saved.")
+    # lineup outputs names with position and team
+    # need to separate out just the names
     return df
 
 def calculate_exposure():
