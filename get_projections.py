@@ -3,8 +3,7 @@
 
 import pandas as pd
 
-def get_dk_salaries():
-    # have user input DK export URL for a slate, and download the .csv
+def get_dk_salaries(): # user inputs DK export URL for a slate, .csv is downloaded
     url = input("Enter the DraftKings export URL for your slate: ")
     df = pd.read_csv(url)
     df.to_csv('dk_salaries.csv')
@@ -40,7 +39,7 @@ def get_numberfire_projections():
     
 
 def get_rotoballer_projections():
-    df = pd.read_csv('rotoballers_full.csv')
+    df = pd.read_csv('rotoballer_full.csv')
     # format salary and player name
     df['Unnamed: 4'] = df['Unnamed: 4'].map(lambda x: float(x.strip('$').replace(',', '')))
     df['Player, POS'] = df['Player, POS'].map(lambda x: x.split(',', 1)[0])
@@ -52,15 +51,14 @@ def get_rotoballer_projections():
 
 def get_sabersim_projections():
     df = pd.read_csv('sabersim_full.csv')
-    players_and_points = df[['Name', 'dk_points']]
+    df['SS Projection'] = pd.to_numeric(df['SS Projection'])
+    players_and_points = df[['Name', 'SS Projection']]
     players_and_points.columns = ['Player', 'FPts']
     return players_and_points
 
-def merge_projections_to_DK(site):
-    # replace AvgPoints column with projections
-    ## dk_sheet = get_dk_salaries()
-    #site = input("Enter site to use: ")
-    dk_sheet = pd.read_csv('dk_salaries.csv') ## delete this and use get_dk_salaries for final script
+def merge_projections_to_DK(site): 
+    # replace AvgPoints column with projections on DraftKings export sheet
+    dk_sheet = pd.read_csv('dk_salaries.csv')
     get_func = globals()["get_" + site + "_projections"]
     sheet = get_func()
     new_sheet = pd.merge(dk_sheet, sheet, left_on='Name', right_on='Player')
@@ -68,20 +66,18 @@ def merge_projections_to_DK(site):
     new_sheet.drop(['Player', 'FPts'], axis=1, inplace=True)
     return new_sheet 
 
-def format_and_save():
-    #get_dk_salaries()
-    # input site names separated by comma
+def format_and_save(): # input site names separated by comma
     sites = input("Which sites are being formatted? ").replace(',', '').split()
-    print(type(sites))
-    print(sites)
     for site in sites:
         sheet = merge_projections_to_DK(site)
         sheet.to_csv(f'{site}_projections.csv')
         print(f"{site} projections saved.")
 
+#get_dk_salaries()
 format_and_save()
 
-
+# eventually, we want to feed get_dk_salaries() and format_and_save() into main() in generate_lineups
 # change site_full.csv to site_raw.csv
+# edit readme to specify NBA
 
 
