@@ -43,15 +43,12 @@ def get_numberfire_projections():
 def get_rotoballer_projections():
     df = pd.read_csv('rotoballers_full.csv')
     # format salary and player name
-    df['▴'] = df['▴'].map(lambda x: float(x.strip('$').replace(',', '')))
+    df['Unnamed: 4'] = df['Unnamed: 4'].map(lambda x: float(x.strip('$').replace(',', '')))
     df['Player, POS'] = df['Player, POS'].map(lambda x: x.split(',', 1)[0])
     # calculate FPts
-    df['FPts'] = df['▴'] * df['Proj / $1K.1'] / 1000
+    df['FPts'] = df['Unnamed: 4'] * df['Proj / $1K.1'] / 1000
     players_and_points = df[['Player, POS', 'FPts']]
     players_and_points.columns = ['Player', 'FPts']
-    # once we can join projections to DK sheet and get exposure, don't need to save anymore
-    players_and_points.to_csv('rotoballers_full.csv')
-    print("Rotoballers projections saved.")
     return players_and_points
 
 def get_sabersim_projections():
@@ -61,12 +58,18 @@ def get_sabersim_projections():
     print("Sabersim projections saved.") 
     return players_and_points
 
-def join_projections_to_DK(site):
+def merge_projections_to_DK(site):
     # replace AvgPoints column with projections
-    pass
-
-def calculate_exposure():
-    pass 
+    ## dk_sheet = get_dk_salaries()
+    dk_sheet = pd.read_csv('dk_salaries.csv') ## delete this and use get_dk_salaries for final script
+    if site == 'rotoballer':
+        rotoballer_sheet = get_rotoballer_projections()
+        new_sheet = pd.merge(dk_sheet, rotoballer_sheet, left_on='Name', right_on='Player')
+        new_sheet['AvgPointsPerGame'] = new_sheet['FPts']
+        new_sheet.drop(['Player', 'FPts'], axis=1, inplace=True)
+        new_sheet.to_csv('rotoballer_projections.csv')
+        print("Rotoballer projections saved.")
+        return new_sheet 
 
 def main():
     dk_sheet = get_dk_salaries()
@@ -79,7 +82,7 @@ def main():
     # average the exposures
     # return ownership projections
 
-
+merge_projections_to_DK('rotoballer')
 
 
 

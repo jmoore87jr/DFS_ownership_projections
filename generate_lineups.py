@@ -7,10 +7,10 @@ def generate_lineups():
     # already have dk_salaries.csv saved for test purposes
     n = input("Enter the number of lineups you want: ")
     optimizer = get_optimizer(Site.DRAFTKINGS, Sport.BASKETBALL)
-    optimizer.load_players_from_csv("dk_salaries.csv")
+    optimizer.load_players_from_csv('rotoballer_projections.csv')
     lineups = []
     headers = ['PG', 'SG', 'SF', 'PF', 'C', 'G', 'F', 'UTIL', 'Pts', 'Salary']
-    for lineup in optimizer.optimize(n=n):
+    for lineup in optimizer.optimize(n=int(n)):
         # create list of lineups with pts and salary tacked on
         lineup_list = list(lineup.players)
         lineup_list.append(lineup.fantasy_points_projection)
@@ -32,3 +32,5 @@ def calculate_exposure():
 """for better ownership projections, generate 100 optimal lineups for 
 various sites and average the ownership. this will be the main function 
 of our script now."""
+
+generate_lineups()
