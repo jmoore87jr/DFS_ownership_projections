@@ -65,10 +65,20 @@ def join_projections_to_DK(site):
     # replace AvgPoints column with projections
     pass
 
+def calculate_exposure():
+    pass 
 
-#get_dk_salaries()
-#get_numberfire_projections()
-get_rotoballer_projections()
+def main():
+    dk_sheet = get_dk_salaries()
+    p1 = get_sabersim_projections()
+    p2 = get_rotoballer_projections()
+    p3 = get_numberfire_projections()
+    # merge dk_sheet with p1, save .csv, then feed it to pydfs-lineup-optimizer
+    # calculate_exposure() for each player
+    # repeat with p2 and p3
+    # average the exposures
+    # return ownership projections
+
 
 
 
