@@ -4,8 +4,8 @@ lineups.csv
 numberfire_full.csv
 numberfire_projections.csv
 daily_process.txt
-rotoballers_full.csv
-rotoballers_full.csv:Zone.Identifier
+rotoballer_full.csv
+rotoballer_full.csv:Zone.Identifier
 rotoballer_projections.csv
 sabersim_full.csv
 sabersim_full.csv:Zone.Identifier
