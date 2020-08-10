@@ -63,23 +63,14 @@ def merge_projections_to_DK():
     ## dk_sheet = get_dk_salaries()
     site = input("Enter site to use: ")
     dk_sheet = pd.read_csv('dk_salaries.csv') ## delete this and use get_dk_salaries for final script
-    if site == 'rotoballer':
-        rotoballer_sheet = get_rotoballer_projections()
-        new_sheet = pd.merge(dk_sheet, rotoballer_sheet, left_on='Name', right_on='Player')
-        new_sheet['AvgPointsPerGame'] = new_sheet['FPts']
-        new_sheet.drop(['Player', 'FPts'], axis=1, inplace=True)
-        new_sheet.to_csv('rotoballer_projections.csv')
-        print("Rotoballer projections saved.")
-        return new_sheet 
-    # I can merge these together with {site}, no need for if statements
-    if site == 'numberfire':
-        numberfire_sheet = get_numberfire_projections()
-        new_sheet = pd.merge(dk_sheet, numberfire_sheet, left_on='Name', right_on='Player')
-        new_sheet['AvgPointsPerGame'] = new_sheet['FPts']
-        new_sheet.drop(['Player', 'FPts'], axis=1, inplace=True)
-        new_sheet.to_csv('numberfire_projections.csv')
-        print("numberfire projections saved.")
-        return new_sheet 
+    get_func = globals()["get_" + site + "_projections"]
+    sheet = get_func()
+    new_sheet = pd.merge(dk_sheet, sheet, left_on='Name', right_on='Player')
+    new_sheet['AvgPointsPerGame'] = new_sheet['FPts']
+    new_sheet.drop(['Player', 'FPts'], axis=1, inplace=True)
+    new_sheet.to_csv(f'{site}_projections.csv')
+    print(f"{site} projections saved.")
+    return new_sheet 
 
 def main():
     dk_sheet = get_dk_salaries()
