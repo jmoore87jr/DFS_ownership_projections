@@ -5,3 +5,9 @@ numberfire_projections.csv
 daily_process.txt
 rotoballer_projections.csv
 sabersim_projections.csv
+numberfire_raw.csv
+numberfire_raw.csv:Zone.Identifier
+rotoballer_raw.csv
+rotoballer_raw.csv:Zone.Identifier
+sabersim_raw.csv
+sabersim_raw.csv:Zone.Identifier
