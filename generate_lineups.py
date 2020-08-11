@@ -18,7 +18,7 @@ def generate_lineups(site, n):
     return pd.DataFrame(lineups, columns=headers)
 
 def calculate_exposure(): # input site names separated by comma
-    sites = input("Enter the sites to be formatted: ").replace(',', '').split()
+    sites = input("Enter the sites to be used: ").replace(',', '').split()
     n = int(input("Enter the number of lineups to generate for each site: "))
     exposures = []
     for site in sites:
@@ -57,9 +57,4 @@ def calculate_exposure(): # input site names separated by comma
     print("Ownership projections saved.")
     return results
 
-
-# upload raw .csv's to github so people can test
-
 calculate_exposure()
-
-# concat all the exposure columns together, then sumif('Name' = df.index[i])
