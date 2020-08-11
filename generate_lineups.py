@@ -53,6 +53,9 @@ def calculate_exposure(): # input site names separated by comma
     results = pd.DataFrame.from_dict(d2, orient='index', 
     columns=['projected_ownership']).sort_values(by=['projected_ownership'], ascending=False)
     print(results)
+    results.to_csv('ownership_projections.csv')
+    print("Ownership projections saved.")
+    return results
 
 
 # upload raw .csv's to github so people can test
