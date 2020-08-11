@@ -1,6 +1,3 @@
-"""get the DraftKings export sheet for a given slate.
-   get projections from various sites and save them in .csv."""
-
 import pandas as pd
 
 def get_dk_salaries(): # user inputs DK export URL for a slate, .csv is downloaded
@@ -95,8 +92,13 @@ def format_and_save(): # input site names separated by comma
         sheet.to_csv(f'{site}_projections.csv')
         print(f"{site} projections saved.")
 
-## rotoballer projections seem really terrible, don't use them
-## add labs and rotogrinders
+## weights based on twitter popularity?
+#rotogrinders 100k
+#labs 50k
+#numberfire 30k
+#awesemo 20k
+#fantasycruncher 15k
+#sabersim 10k
 
 #get_dk_salaries()
 format_and_save()
