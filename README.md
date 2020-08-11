@@ -1,5 +1,5 @@
 **NAME**\
-DFS Ownership Projection Calculator
+DFS Ownership Projection Calculator (NBA only right now)
 
 **WHAT**\
 Since most DFS players in 2020 are using good projections to make their lineups, I generate ownership projections by taking projections from various sites, optimizing 100 lineups with each of them, and calculating the average ownership for each player. 
@@ -13,19 +13,23 @@ The 'get' functions in get_projections.py take DFS projection tables from variou
 These projections are then joined to the DK export .csv, which pydfs-lineup-optimizer uses to generate 100 optimal lineups. For each set of optimal lineups, the average ownership of each player is calculated and saved in a 2-column pd.DataFrame of 'Player' and 'Ownership'. We can then average the ownership for each player from each set of lineups and return our 'Projected ownership' table.
 
 **HOW TO USE IT**\
-Player projection tables from Rotoballers and Sabersim should be saved in your project folder as 'rotoballers_full.csv' and 'sabersim_full.csv', respectively. The program will download and save numberfire projections for you.
+Scraping has been blocked or problematic everywhere. 
 
-Run the program.
+1. Go to each site and download or copy/paste the projections in your project folder as {site_name}_raw.csv. Leave them as they are on the site; the program will format them.
+
+2. Run format_sheets.py
 
 When prompted, enter the url of the DraftKings export file for the slate you want to play. 
 
 The .csv of ownership projections will be saved as 'ownership_projections.csv'.
 
-**NOTES**\
-The project is not complete yet. If you run it now, it will optimize lineups for season average points, not projected points. 
+3. Run generate_lineups.py
 
-Upcoming changes:
+Enter the sites you want to use, separated by comma. i.e.:
+'Enter the sites to be used: sabersim, rotoballer, numberfire'
 
-* Join projections to the DraftKings export sheet
-* Generate n lineups from each site
-* Calculate average ownership for each player
+Then enter the number of lineups to generate from each site, wait a few seconds (150 lineups per site will probably take 2-3 minutes), and you should have your ownership projections saved in the project folder.
+
+
+**PLANNED CHANGES**
+* Add support for other paid sites like  FantasyLabs and Awesemo. The ownership projections are already alright, but adding more pay sites should make them much better.
