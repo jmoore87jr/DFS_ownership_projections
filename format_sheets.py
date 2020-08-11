@@ -9,8 +9,22 @@ def get_dk_salaries(): # user inputs DK export URL for a slate, .csv is download
     df.to_csv('dk_salaries.csv')
     print("DraftKings salaries saved.")
     return df
-    
 
+def format_rotogrinders_projections():
+    df = pd.read_csv('rotogrinders_raw.csv')
+    players_and_points = df[['name', 'fpts']]
+    players_and_points.columns = ['Player', 'FPts']
+    print(players_and_points.info())
+    print(players_and_points.head())
+    return players_and_points
+
+def format_sabersim_projections():
+    df = pd.read_csv('sabersim_raw.csv')
+    df['SS Projection'] = pd.to_numeric(df['SS Projection'])
+    players_and_points = df[['Name', 'SS Projection']]
+    players_and_points.columns = ['Player', 'FPts']
+    return players_and_points
+    
 def format_numberfire_projections():
     # think this is getting fanduel projections...
     # we need to change this by hand because 3pm isn't in the sheet
@@ -49,7 +63,9 @@ def format_numberfire_projections():
     players_and_points = df.iloc[:,[1,2]]
     players_and_points.columns = ['Player', 'FPts']
     return players_and_points
-    
+
+def format_fantasylabs_projections():
+    pass 
 
 def format_rotoballer_projections():
     df = pd.read_csv('rotoballer_raw.csv')
@@ -61,19 +77,6 @@ def format_rotoballer_projections():
     players_and_points = df[['Player, POS', 'FPts']]
     players_and_points.columns = ['Player', 'FPts']
     return players_and_points
-
-def format_sabersim_projections():
-    df = pd.read_csv('sabersim_raw.csv')
-    df['SS Projection'] = pd.to_numeric(df['SS Projection'])
-    players_and_points = df[['Name', 'SS Projection']]
-    players_and_points.columns = ['Player', 'FPts']
-    return players_and_points
-
-def format_fantasylabs_projections():
-    pass 
-
-def format_awesemo_projections():
-    pass 
 
 def merge_projections_to_DK(site): 
     # replace AvgPoints column with projections on DraftKings export sheet
@@ -97,7 +100,6 @@ def format_and_save(): # input site names separated by comma
 
 #get_dk_salaries()
 format_and_save()
-#format_numberfire_projections()
 
 
 
