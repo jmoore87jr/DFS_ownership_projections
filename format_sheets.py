@@ -14,17 +14,26 @@ def get_dk_salaries(): # user inputs DK export URL for a slate, .csv is download
 def format_numberfire_projections():
     # think this is getting fanduel projections...
     # we need to change this by hand because 3pm isn't in the sheet
-    ##list_of_tables = pd.read_html('https://www.numberfire.com/nba/daily-fantasy/daily-basketball-projections')
-    ##df = list_of_tables[3]
+    #list_of_tables = pd.read_html('https://www.numberfire.com/nba/daily-fantasy/daily-basketball-projections')
+    #df = list_of_tables[3]
     df = pd.read_csv('numberfire_raw.csv')
     for row in range(1,len(df.index)): # separate names out of 2nd column
         name_field = df.iloc[row,1]
         split_field = str(name_field).split()
         # remove OUT and GTD statuses
-        statuses = ['OUT', 'GTD']
+        #statuses = ['OUT', 'GTD']
+        statuses = ['OUTTue', 'GTDTue']
         [split_field.remove(status) for status in split_field if status in statuses]
         # grab player names of various lengths
-        if (len(split_field) == 10):
+        # field sizes for scraping are 10,11,12,14
+        # field sizes for copy/paste are 6,7,8
+        if (len(split_field) == 6):
+            name = f"{split_field[0]} {split_field[1]}"
+        elif (len(split_field) == 7):
+            name = f"{split_field[0]} {split_field[1]} {split_field[2]}"
+        elif (len(split_field) == 8):
+            name = f"{split_field[0]} {split_field[1]} {split_field[2]} {split_field[3]}"
+        elif (len(split_field) == 10):
             name = f"{split_field[2]} {split_field[3]}"
         elif (len(split_field) == 11):
             name = f"{split_field[2]} {split_field[3]} {split_field[4]}"
@@ -32,6 +41,10 @@ def format_numberfire_projections():
             name = f"{split_field[3]} {split_field[4]} {split_field[5]}"
         elif (len(split_field) == 14):
             name = f"{split_field[4]} {split_field[5]} {split_field[6]} {split_field[7]}"
+        # testing
+        else:
+            print(len(split_field))
+            print(split_field)
         df.iloc[row,1] = name
     players_and_points = df.iloc[:,[1,2]]
     players_and_points.columns = ['Player', 'FPts']
@@ -56,6 +69,12 @@ def format_sabersim_projections():
     players_and_points.columns = ['Player', 'FPts']
     return players_and_points
 
+def format_fantasylabs_projections():
+    pass 
+
+def format_awesemo_projections():
+    pass 
+
 def merge_projections_to_DK(site): 
     # replace AvgPoints column with projections on DraftKings export sheet
     dk_sheet = pd.read_csv('dk_salaries.csv')
@@ -73,8 +92,12 @@ def format_and_save(): # input site names separated by comma
         sheet.to_csv(f'{site}_projections.csv')
         print(f"{site} projections saved.")
 
-get_dk_salaries()
+## rotoballer projections seem really terrible, don't use them
+## add labs and rotogrinders
+
+#get_dk_salaries()
 format_and_save()
+#format_numberfire_projections()
 
 
 

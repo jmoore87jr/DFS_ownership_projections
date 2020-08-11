@@ -1,185 +1,207 @@
 ,Unnamed: 0_level_0,Fantasy,Fantasy,Fantasy,Stats,Stats,Stats,Stats,Stats,Stats,Stats
 ,Player,FP,Cost,Value,Min,Pts,Reb,Ast,Stl,Blk,TO
-0,J. Harden James Harden SG  HOU @ SAC Sun 8:00pm,59.2,"$10,800",5.48,36.76,35.1,6.1,8.8,1.8,0.8,4.2
-1,J. Embiid Joel Embiid C  PHI @ POR Sun 6:30pm,52.0,"$9,600",5.41,33.62,26.5,12.9,3.4,1.0,1.7,3.2
-2,J. Nurkic Jusuf Nurkic C  PHI @ POR Sun 6:30pm,48.3,"$8,500",5.68,34.07,17.9,10.1,4.4,1.7,3.1,2.7
-3,D. Lillard Damian Lillard PG  PHI @ POR Sun 6:30pm,48.2,"$9,800",4.92,38.69,30.0,4.4,7.8,1.1,0.3,3.0
-4,K. Leonard Kawhi Leonard SF  BKN @ LAC OUT Sun 9:00pm,44.7,"$8,400",5.33,30.91,25.6,6.4,4.9,1.7,0.6,2.8
-5,N. Vucevic Nikola Vucevic C  ORL @ BOS Sun 5:00pm,43.3,"$7,900",5.48,32.64,20.7,11.2,3.5,0.9,0.9,1.5
-6,D. Fox De'Aaron Fox PG  HOU @ SAC Sun 8:00pm,43.0,"$8,000",5.37,35.31,22.6,4.4,7.8,1.7,0.6,3.5
-7,P. Siakam Pascal Siakam SF  MEM @ TOR Sun 2:00pm,41.3,"$7,400",5.59,35.38,23.0,7.9,3.3,1.0,1.1,2.4
-8,J. Holiday Jrue Holiday SG  SA @ NO Sun 3:00pm,40.6,"$8,100",5.02,34.68,19.8,4.9,7.1,1.6,0.8,2.9
-9,J. Tatum Jayson Tatum PF  ORL @ BOS Sun 5:00pm,40.4,"$7,900",5.11,34.69,23.3,6.7,3.1,1.4,0.8,2.2
-10,D. DeRozan DeMar DeRozan SG  SA @ NO Sun 3:00pm,40.2,"$7,700",5.21,34.67,23.1,5.5,5.9,1.1,0.3,2.6
-11,P. George Paul George SG  BKN @ LAC Sun 9:00pm,39.6,"$7,600",5.21,29.88,23.1,5.8,4.3,1.5,0.5,2.9
-12,K. Lowry Kyle Lowry PG  MEM @ TOR Sun 2:00pm,39.1,"$7,000",5.59,36.18,20.3,4.7,7.4,1.3,0.4,3.0
-13,J. Morant Ja Morant PG  MEM @ TOR Sun 2:00pm,37.9,"$7,400",5.13,36.89,20.0,4.4,8.1,1.2,0.2,3.7
-14,B. Ingram Brandon Ingram SF  SA @ NO Sun 3:00pm,37.9,"$7,400",5.12,34.23,22.8,6.3,3.9,1.0,0.6,3.1
-15,J. Valanciunas Jonas Valanciunas C  MEM @ TOR Sun 2:00pm,36.8,"$7,600",4.84,31.81,15.1,12.7,2.1,0.4,1.4,2.1
-16,C. McCollum C.J. McCollum SG  PHI @ POR Sun 6:30pm,36.6,"$7,300",5.02,36.26,23.5,4.1,4.0,0.8,0.6,2.0
-17,F. VanVleet Fred VanVleet SG  MEM @ TOR Sun 2:00pm,35.9,"$7,200",4.98,35.67,17.3,3.9,6.6,1.8,0.3,2.3
-18,T. Harris Tobias Harris SF  PHI @ POR Sun 6:30pm,35.4,"$7,500",4.73,36.13,20.5,6.7,3.0,0.8,0.5,1.5
-19,R. Covington Robert Covington PF  HOU @ SAC Sun 8:00pm,34.6,"$6,600",5.24,35.26,15.5,7.4,1.6,1.8,1.4,1.8
-20,D. White Derrick White PG  SA @ NO Sun 3:00pm,33.2,"$7,000",4.74,32.08,16.9,4.5,4.5,0.9,1.1,1.9
-21,D. Murray Dejounte Murray PG  SA @ NO Sun 3:00pm,33.0,"$6,200",5.31,30.45,13.6,6.0,5.3,1.9,0.3,2.4
-22,L. Ball Lonzo Ball PG  SA @ NO Sun 3:00pm,32.7,"$7,000",4.66,32.43,11.4,6.0,7.5,1.5,0.5,3.2
-23,J. Brown Jaylen Brown SF  ORL @ BOS Sun 5:00pm,32.2,"$6,400",5.03,33.61,19.4,6.1,2.1,1.1,0.4,2.2
-24,K. Walker Kemba Walker PG  ORL @ BOS Sun 5:00pm,32.0,"$5,700",5.61,30.12,18.4,3.8,4.6,0.9,0.5,2.1
-25,Z. Williamson Zion Williamson PF  SA @ NO Sun 3:00pm,31.6,"$6,800",4.64,27.42,20.1,6.0,2.1,1.0,0.2,2.5
-26,G. Hayward Gordon Hayward SF  ORL @ BOS Sun 5:00pm,30.9,"$6,000",5.15,33.72,15.8,6.4,4.0,0.7,0.4,1.9
-27,A. Horford Al Horford PF  PHI @ POR Sun 6:30pm,29.8,"$6,200",4.81,30.4,12.5,6.7,3.6,0.8,0.9,1.2
-28,D. Favors Derrick Favors C  SA @ NO Sun 3:00pm,29.8,"$5,500",5.42,26.3,10.8,10.3,1.5,0.8,1.1,1.3
-29,D. Theis Daniel Theis PF  ORL @ BOS Sun 5:00pm,29.7,"$5,800",5.11,28.56,11.8,8.0,1.7,0.8,1.5,1.2
-30,B. Bogdanovic Bogdan Bogdanovic SG  HOU @ SAC Sun 8:00pm,28.4,"$5,400",5.26,31.37,16.6,3.4,3.6,1.1,0.3,1.9
-31,B. Clarke Brandon Clarke PF  MEM @ TOR Sun 2:00pm,28.4,"$5,700",4.98,25.89,13.3,7.1,1.5,0.7,1.1,1.1
-32,J. Poeltl Jakob Poeltl C  SA @ NO Sun 3:00pm,28.2,"$5,100",5.52,25.05,8.1,8.1,2.1,0.8,2.0,1.2
-33,M. Smart Marcus Smart SG  ORL @ BOS Sun 5:00pm,27.8,"$5,300",5.24,30.5,12.8,3.7,4.3,1.4,0.5,1.6
-34,N. Bjelica Nemanja Bjelica PF  HOU @ SAC Sun 8:00pm,27.1,"$5,200",5.2,28.49,12.5,6.5,2.7,0.8,0.6,1.5
-35,J. Richardson Josh Richardson SG  PHI @ POR Sun 6:30pm,26.3,"$4,500",5.84,33.81,13.2,3.8,3.4,1.1,0.7,2.0
-36,T. Ross Terrence Ross SG  ORL @ BOS Sun 5:00pm,26.2,"$5,100",5.13,30.0,16.6,3.4,1.4,1.2,0.3,1.1
-37,B. Hield Buddy Hield SG  HOU @ SAC Sun 8:00pm,25.9,"$4,800",5.39,25.79,16.5,3.7,2.5,0.8,0.3,2.1
-38,M. Fultz Markelle Fultz PG  ORL @ BOS Sun 5:00pm,25.9,"$4,500",5.75,28.52,12.3,3.3,5.0,1.2,0.2,2.1
-39,D. Brooks Dillon Brooks SG  MEM @ TOR Sun 2:00pm,25.8,"$5,400",4.78,30.26,16.5,3.3,2.1,0.9,0.4,1.7
-40,C. Anthony Carmelo Anthony SF  PHI @ POR Sun 6:30pm,25.7,"$4,900",5.24,32.75,13.9,5.7,1.7,0.9,0.5,1.8
-41,A. Burks Alec Burks SG  PHI @ POR Sun 6:30pm,25.1,"$3,800",6.59,24.74,14.3,4.0,2.5,0.9,0.3,1.4
-42,S. Ibaka Serge Ibaka PF  MEM @ TOR Sun 2:00pm,25.0,"$4,600",5.44,23.07,13.5,6.9,1.1,0.3,0.8,1.7
-43,M. Morris Marcus Morris PF  BKN @ LAC Sun 9:00pm,24.9,"$4,300",5.79,28.07,15.2,4.5,1.4,0.7,0.5,1.4
-44,N. Powell Norman Powell SG  MEM @ TOR Sun 2:00pm,24.9,"$4,700",5.29,26.84,14.9,3.5,1.7,1.2,0.3,1.3
-45,M. Gasol Marc Gasol C  MEM @ TOR Sun 2:00pm,24.7,"$4,500",5.5,25.85,8.4,6.4,3.3,0.8,0.9,1.4
-46,H. Barnes Harrison Barnes SF  HOU @ SAC Sun 8:00pm,24.6,"$4,400",5.58,34.11,14.6,4.5,2.3,0.6,0.2,1.3
-47,O. Anunoby OG Anunoby SF  MEM @ TOR Sun 2:00pm,24.3,"$4,200",5.77,29.95,11.1,5.0,1.5,1.4,0.6,1.1
-48,R. Gay Rudy Gay SF  SA @ NO Sun 3:00pm,24.2,"$5,400",4.48,25.09,12.5,6.3,1.7,0.5,0.6,1.7
-49,C. Chiozza Chris Chiozza PG  BKN @ LAC Sun 9:00pm,24.1,"$3,900",6.17,26.85,9.8,3.0,5.3,1.4,0.2,2.1
-50,D. House Jr. Danuel House Jr. SF  HOU @ SAC Sun 8:00pm,24.0,"$4,500",5.32,33.14,11.6,4.5,1.7,1.2,0.6,1.0
-51,S. Milton Shake Milton PG  PHI @ POR Sun 6:30pm,24.0,"$4,700",5.1,29.48,12.6,3.5,3.3,1.1,0.3,2.0
-52,J. Ennis James Ennis SF  ORL @ BOS Sun 5:00pm,23.9,"$3,900",6.13,31.92,11.2,6.0,1.8,0.8,0.6,1.4
-53,R. Kurucs Rodions Kurucs PF  BKN @ LAC Sun 9:00pm,23.8,"$3,900",6.09,30.4,10.0,6.8,2.4,1.0,0.4,2.2
-54,G. Trent Gary Trent Jr. SG  PHI @ POR Sun 6:30pm,23.2,"$4,700",4.94,33.42,13.4,3.1,1.6,1.2,0.3,0.8
-55,L. Williams Louis Williams SG  BKN @ LAC GTD Sun 9:00pm,22.4,"$4,800",4.66,21.41,13.6,2.3,4.2,0.5,0.1,2.1
-56,J. Redick J.J. Redick SG  SA @ NO Sun 3:00pm,22.2,"$4,300",5.17,26.35,15.4,2.7,2.0,0.4,0.2,1.2
-57,R. Jackson Reggie Jackson PG  BKN @ LAC Sun 9:00pm,22.0,"$3,800",5.78,25.36,12.3,3.1,4.1,0.4,0.1,1.7
-58,P. Tucker P.J. Tucker C  HOU @ SAC Sun 8:00pm,21.9,"$3,800",5.75,34.07,8.0,6.5,1.7,1.1,0.4,1.0
-59,B. McLemore Ben McLemore SG  HOU @ SAC Sun 8:00pm,21.6,"$3,900",5.54,33.72,13.6,3.0,1.2,1.0,0.2,1.0
-60,D. Augustin D.J. Augustin PG  ORL @ BOS Sun 5:00pm,21.4,"$4,100",5.23,26.9,11.2,2.2,4.8,0.6,0.0,1.4
-61,J. Martin Jeremiah Martin PG  BKN @ LAC Sun 9:00pm,21.1,"$3,900",5.41,18.28,10.4,2.4,2.8,1.2,0.4,1.2
-62,I. Zubac Ivica Zubac C  BKN @ LAC Sun 9:00pm,20.5,"$5,500",3.73,17.27,7.6,6.9,0.9,0.3,1.1,0.9
-63,G. Temple Garrett Temple SG  BKN @ LAC Sun 9:00pm,20.3,"$3,900",5.21,27.68,10.2,3.4,2.3,0.8,0.4,1.0
-64,A. Len Alex Len C  HOU @ SAC GTD Sun 8:00pm,20.1,"$3,700",5.43,17.57,7.8,6.0,1.0,0.4,1.2,1.2
-65,T. Luwawu-Cabarrot Timothe Luwawu-Cabarrot SG  BKN @ LAC Sun 9:00pm,20.0,"$3,700",5.41,28.51,11.4,4.1,1.2,0.7,0.4,1.4
-66,L. Walker Lonnie Walker SG  SA @ NO Sun 3:00pm,20.0,"$4,000",4.99,23.93,10.4,3.6,1.5,0.9,0.5,1.2
-67,K. Anderson Kyle Anderson SF  MEM @ TOR Sun 2:00pm,19.7,"$4,600",4.28,22.08,6.5,5.3,2.3,0.9,0.6,1.1
-68,J. Green Jeff Green PF  HOU @ SAC Sun 8:00pm,19.7,"$4,300",4.58,25.52,11.2,3.7,1.1,0.9,0.3,1.2
-69,T. Johnson Tyler Johnson PG  BKN @ LAC Sun 9:00pm,19.6,"$4,000",4.9,28.8,9.6,2.7,2.9,0.9,0.3,1.2
-70,K. Johnson Keldon Johnson SF  SA @ NO Sun 3:00pm,19.2,"$4,000",4.8,21.58,8.8,4.4,1.4,1.0,0.2,0.6
-71,G. Dieng Gorgui Dieng C  MEM @ TOR Sun 2:00pm,18.9,"$3,600",5.26,16.2,7.0,5.4,1.1,0.8,0.8,1.0
-72,D. Melton De'Anthony Melton PG  MEM @ TOR Sun 2:00pm,18.8,"$4,100",4.58,18.68,7.5,3.3,2.8,1.2,0.3,1.4
-73,J. Hart Josh Hart SG  SA @ NO Sun 3:00pm,18.4,"$4,300",4.28,21.78,8.3,4.8,1.3,0.8,0.3,0.9
-74,G. Clark Gary Clark PF  ORL @ BOS Sun 5:00pm,18.4,"$3,500",5.25,25.42,6.7,5.6,1.1,0.0,1.1,0.0
-75,Z. Collins Zach Collins PF  PHI @ POR Sun 6:30pm,18.3,"$5,100",3.59,28.95,7.9,4.9,1.9,0.5,0.5,1.3
-76,C. Joseph Cory Joseph PG  HOU @ SAC Sun 8:00pm,18.3,"$3,700",4.95,25.99,7.0,2.8,3.9,0.8,0.3,1.2
-77,J. Green JaMychal Green PF  BKN @ LAC Sun 9:00pm,18.3,"$3,700",4.94,21.75,7.5,6.8,0.8,0.4,0.4,1.0
-78,G. Allen Grayson Allen SG  MEM @ TOR Sun 2:00pm,18.2,"$3,700",4.93,27.17,11.7,3.4,2.1,0.2,0.0,1.3
-79,D. Eubanks Drew Eubanks C  SA @ NO Sun 3:00pm,18.0,"$3,800",4.74,17.02,8.2,5.1,0.6,0.3,1.1,1.4
-80,K. Bazemore Kent Bazemore SF  HOU @ SAC Sun 8:00pm,17.5,"$4,000",4.37,21.91,7.8,3.7,1.3,1.0,0.5,1.2
-81,H. Giles Harry Giles PF  HOU @ SAC Sun 8:00pm,17.0,"$3,800",4.48,15.51,8.0,4.6,1.2,0.5,0.4,1.0
-82,A. Rivers Austin Rivers PG  HOU @ SAC Sun 8:00pm,16.9,"$3,500",4.81,24.92,9.0,2.5,1.7,0.8,0.2,0.7
-83,L. Shamet Landry Shamet PG  BKN @ LAC Sun 9:00pm,15.9,"$3,500",4.53,27.05,9.9,2.1,1.9,0.3,0.2,0.9
-84,R. Hollis-Jefferson Rondae Hollis-Jefferson PF  MEM @ TOR Sun 2:00pm,15.2,"$3,600",4.22,15.86,5.6,3.9,1.4,0.7,0.5,0.8
-85,D. Musa Dzanan Musa SF  BKN @ LAC Sun 9:00pm,14.9,"$3,500",4.25,19.56,6.7,3.9,1.0,1.0,0.0,1.0
-86,F. Jackson Frank Jackson PG  SA @ NO Sun 3:00pm,14.2,"$3,700",3.85,19.52,8.6,2.2,1.6,0.4,0.2,1.2
-87,D. Hall Donta Hall SF  BKN @ LAC Sun 9:00pm,14.0,"$3,500",3.99,20.59,3.5,6.1,0.9,0.0,0.9,0.9
-88,W. Iwundu Wesley Iwundu SG  ORL @ BOS Sun 5:00pm,13.5,"$3,500",3.86,20.01,5.8,3.0,1.2,0.7,0.2,0.4
-89,K. Birch Khem Birch PF  ORL @ BOS Sun 5:00pm,13.5,"$3,500",3.86,18.37,4.2,4.5,1.0,0.4,0.6,0.6
-90,M. Bamba Mohamed Bamba C  ORL @ BOS Sun 5:00pm,13.3,"$3,500",3.8,11.2,4.7,3.8,0.5,0.3,1.0,0.6
-91,F. Korkmaz Furkan Korkmaz SG  PHI @ POR Sun 6:30pm,13.0,"$3,500",3.72,17.22,7.9,1.9,0.9,0.5,0.2,0.6
-92,M. Thybulle Matisse Thybulle SF  PHI @ POR Sun 6:30pm,13.0,"$3,500",3.72,18.29,4.6,1.8,1.1,1.2,0.6,0.8
-93,N. Melli Nicolo Melli PF  SA @ NO Sun 3:00pm,12.9,"$3,900",3.3,15.42,6.1,2.6,1.1,0.6,0.3,0.7
-94,B. Wanamaker Brad Wanamaker PG  ORL @ BOS Sun 5:00pm,12.7,"$4,300",2.96,16.39,5.7,1.8,2.1,0.7,0.2,1.0
-95,P. Patterson Patrick Patterson PF  BKN @ LAC Sun 9:00pm,12.4,"$3,500",3.55,15.87,6.3,3.2,1.0,0.2,0.2,0.4
-96,A. Simons Anfernee Simons PG  PHI @ POR Sun 6:30pm,11.7,"$3,500",3.35,16.78,6.8,1.8,1.1,0.4,0.2,0.7
-97,T. Davis Terence Davis II SG  MEM @ TOR Sun 2:00pm,11.5,"$3,500",3.29,12.22,5.7,2.3,1.3,0.5,0.1,0.7
-98,A. Tolliver Anthony Tolliver PF  MEM @ TOR Sun 2:00pm,11.2,"$3,500",3.21,21.2,4.8,3.9,1.1,0.2,0.2,1.1
-99,J. Anderson Justin Anderson SG  BKN @ LAC Sun 9:00pm,10.5,"$3,500",3.0,16.83,2.6,3.2,1.9,0.0,0.6,0.6
-100,E. Kanter Enes Kanter C  ORL @ BOS Sun 5:00pm,10.4,"$3,800",2.73,8.19,4.0,3.6,0.5,0.2,0.4,0.5
-101,R. Williams Robert Williams C  ORL @ BOS Sun 5:00pm,10.2,"$3,800",2.69,9.48,2.6,3.2,0.4,0.4,0.8,0.4
-102,M. Belinelli Marco Belinelli SG  SA @ NO OUT Sun 3:00pm,8.7,"$3,500",2.48,12.55,5.2,1.4,1.0,0.2,0.0,0.3
-103,J. Hayes Jaxson Hayes C  SA @ NO Sun 3:00pm,8.6,"$3,500",2.45,7.9,3.5,2.2,0.5,0.2,0.5,0.4
-104,R. McGruder Rodney McGruder SG  BKN @ LAC Sun 9:00pm,8.3,"$3,500",2.37,16.32,3.2,2.5,0.6,0.6,0.0,0.6
-105,G. Williams Grant Williams PF  ORL @ BOS Sun 5:00pm,8.1,"$3,500",2.33,10.35,2.4,2.2,0.8,0.3,0.5,0.5
-106,L. Thomas Lance Thomas SF  BKN @ LAC Sun 9:00pm,8.0,"$3,500",2.29,23.08,3.7,2.9,1.7,0.0,0.0,1.7
-107,G. Robinson III Glenn Robinson III SF  PHI @ POR OUT Sun 6:30pm,7.1,"$3,700",1.91,11.23,4.1,1.4,0.4,0.2,0.1,0.2
-108,S. Ojeleye Semi Ojeleye SF  ORL @ BOS Sun 5:00pm,6.5,"$3,500",1.85,13.75,2.9,1.8,0.4,0.4,0.0,0.4
-109,M. Hezonja Mario Hezonja SF  PHI @ POR Sun 6:30pm,6.1,"$3,500",1.74,8.6,2.6,1.7,0.5,0.3,0.1,0.5
-110,M. Frazier Michael Frazier II SG  HOU @ SAC Sun 8:00pm,5.5,"$3,500",1.57,13.92,3.0,1.2,0.3,0.3,0.0,0.3
-111,M. Scott Mike Scott PF  PHI @ POR OUT Sun 6:30pm,4.3,"$3,700",1.16,6.45,2.2,1.2,0.3,0.1,0.0,0.1
-112,J. Konchar John Konchar SG  MEM @ TOR Sun 2:00pm,4.3,"$3,500",1.22,4.62,1.5,1.1,0.5,0.2,0.1,0.2
-113,M. Thomas Matt Thomas SG  MEM @ TOR Sun 2:00pm,3.6,"$3,500",1.02,4.52,2.0,0.8,0.4,0.0,0.0,0.0
-114,T. Mann Terance Mann SG  BKN @ LAC GTD Sun 9:00pm,2.1,"$3,500",0.59,3.23,0.6,0.4,0.4,0.1,0.1,0.2
-115,J. Jackson Josh Jackson SF  MEM @ TOR Sun 2:00pm,2.0,"$3,500",0.57,1.82,1.0,0.4,0.2,0.1,0.0,0.1
-116,J. Parker Jabari Parker PF  HOU @ SAC Sun 8:00pm,1.4,"$3,500",0.4,1.25,0.7,0.3,0.1,0.1,0.0,0.1
-117,P. Mills Patrick Mills PG  SA @ NO Sun 3:00pm,1.2,"$3,600",0.33,1.34,0.7,0.1,0.1,0.1,0.0,0.1
-118,P. McCaw Patrick McCaw SG  MEM @ TOR OUT Sun 2:00pm,0.9,"$3,500",0.25,1.22,0.3,0.1,0.1,0.1,0.0,0.0
-119,T. Waters Tremont Waters PG  ORL @ BOS Sun 5:00pm,0.8,"$3,500",0.22,1.04,0.3,0.1,0.1,0.1,0.0,0.1
-120,C. Clemons Chris Clemons PG  HOU @ SAC Sun 8:00pm,0.8,"$3,500",0.22,1.01,0.6,0.1,0.1,0.0,0.0,0.1
-121,L. Mbah a Moute Luc Mbah a Moute PF  HOU @ SAC Sun 8:00pm,0.7,"$3,500",0.2,1.25,0.4,0.2,0.1,0.0,0.0,0.1
-122,T. Chandler Tyson Chandler C  HOU @ SAC Sun 8:00pm,0.6,"$3,500",0.16,0.94,0.2,0.3,0.0,0.0,0.0,0.0
-123,R. Neto Raul Neto PG  PHI @ POR Sun 6:30pm,0.5,"$3,500",0.13,0.82,0.3,0.1,0.1,0.0,0.0,0.1
-124,A. Coffey Amir Coffey PF  BKN @ LAC Sun 9:00pm,0.5,"$3,500",0.13,0.66,0.2,0.1,0.1,0.0,0.0,0.0
-125,D. Carroll DeMarre Carroll SF  HOU @ SAC Sun 8:00pm,0.4,"$3,500",0.11,0.7,0.2,0.1,0.1,0.0,0.0,0.1
-126,J. Noah Joakim Noah C  BKN @ LAC Sun 9:00pm,0.3,"$3,500",0.1,0.45,0.1,0.2,0.0,0.0,0.0,0.0
-127,Y. Watanabe Yuta Watanabe SG  MEM @ TOR Sun 2:00pm,0.3,"$3,500",0.09,0.54,0.2,0.1,0.0,0.0,0.0,0.0
-128,C. Boucher Chris Boucher C  MEM @ TOR Sun 2:00pm,0.3,"$3,600",0.09,0.3,0.2,0.1,0.0,0.0,0.0,0.0
-129,O. Brissett Oshae Brissett SF  MEM @ TOR OUT Sun 2:00pm,0.3,"$3,500",0.09,0.66,0.2,0.1,0.0,0.0,0.0,0.0
-130,N. Little Nassir Little SF  PHI @ POR Sun 6:30pm,0.3,"$3,500",0.09,0.63,0.2,0.1,0.0,0.0,0.0,0.0
-131,R. Langford Romeo Langford SG  ORL @ BOS Sun 5:00pm,0.3,"$3,500",0.09,0.73,0.2,0.1,0.0,0.0,0.0,0.0
-132,J. James Justin James SG  HOU @ SAC GTD Sun 8:00pm,0.3,"$3,500",0.09,0.58,0.2,0.1,0.0,0.0,0.0,0.0
-133,C. Edwards Carsen Edwards PG  ORL @ BOS Sun 5:00pm,0.3,"$3,500",0.09,0.45,0.2,0.1,0.0,0.0,0.0,0.0
-134,T. Zeller Tyler Zeller C  SA @ NO OUT Sun 3:00pm,0.2,"$3,500",0.06,0.13,0.1,0.1,0.0,0.0,0.0,0.0
-135,V. Poirier Vincent Poirier C  ORL @ BOS Sun 5:00pm,0.2,"$3,500",0.06,0.38,0.1,0.1,0.0,0.0,0.0,0.0
-136,M. Brown Moses Brown C  PHI @ POR Sun 6:30pm,0.2,"$3,500",0.06,0.18,0.1,0.1,0.0,0.0,0.0,0.0
-137,J. Okafor Jahlil Okafor C  SA @ NO Sun 3:00pm,0.1,"$3,500",0.03,0.15,0.1,0.0,0.0,0.0,0.0,0.0
-138,M. Miller Malcolm Miller PF  MEM @ TOR Sun 2:00pm,0.1,"$3,500",0.03,0.32,0.1,0.0,0.0,0.0,0.0,0.0
-139,C. Metu Chimezie Metu C  SA @ NO Sun 3:00pm,0.1,"$3,500",0.03,0.15,0.1,0.0,0.0,0.0,0.0,0.0
-140,M. Guduric Marko Guduric SG  MEM @ TOR Sun 2:00pm,0.1,"$3,500",0.03,0.22,0.1,0.0,0.0,0.0,0.0,0.0
-141,B. Johnson B.J. Johnson SF  ORL @ BOS Sun 5:00pm,0.1,"$3,500",0.03,0.19,0.1,0.0,0.0,0.0,0.0,0.0
-142,C. Brewer Corey Brewer SF  HOU @ SAC Sun 8:00pm,0.1,"$3,500",0.03,0.16,0.1,0.0,0.0,0.0,0.0,0.0
-143,W. Gabriel Wenyen Gabriel PF  PHI @ POR Sun 6:30pm,0.1,"$3,500",0.03,0.31,0.1,0.0,0.0,0.0,0.0,0.0
-144,K. Williams Kenrich Williams SF  SA @ NO GTD Sun 3:00pm,0.1,"$3,500",0.03,0.27,0.1,0.0,0.0,0.0,0.0,0.0
-145,N. Alexander-Walker Nickeil Alexander-Walker SG  SA @ NO OUT Sun 3:00pm,0.1,"$3,500",0.03,0.27,0.1,0.0,0.0,0.0,0.0,0.0
-146,A. Gordon Aaron Gordon PF  ORL @ BOS OUT Sun 5:00pm,0.0,"$6,300",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-147,M. Carter-Williams Michael Carter-Williams PG  ORL @ BOS Sun 5:00pm,0.0,"$3,700",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-148,E. Fournier Evan Fournier SF  ORL @ BOS OUT Sun 5:00pm,0.0,"$5,300",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-149,M. Frazier Melvin Frazier SF  ORL @ BOS Sun 5:00pm,0.0,"$3,500",0.0,0.04,0.0,0.0,0.0,0.0,0.0,0.0
-150,J. Green Javonte Green SG  ORL @ BOS Sun 5:00pm,0.0,"$3,600",0.0,0.13,0.0,0.0,0.0,0.0,0.0,0.0
-151,V. Law Vic Law SF  ORL @ BOS Sun 5:00pm,0.0,"$3,500",0.0,0.02,0.0,0.0,0.0,0.0,0.0,0.0
-152,Z. Cheatham Zylan Cheatham PF  SA @ NO Sun 3:00pm,0.0,"$3,500",0.0,0.11,0.0,0.0,0.0,0.0,0.0,0.0
-153,T. Fall Tacko Fall C  ORL @ BOS Sun 5:00pm,0.0,"$3,500",0.0,0.05,0.0,0.0,0.0,0.0,0.0,0.0
-154,B. Forbes Bryn Forbes SG  SA @ NO OUT Sun 3:00pm,0.0,"$3,500",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-155,J. Jackson Jaren Jackson Jr. PF  MEM @ TOR Sun 2:00pm,0.0,"$3,500",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-156,T. Jones Tyus Jones PG  MEM @ TOR OUT Sun 2:00pm,0.0,"$3,500",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-157,S. Johnson Stanley Johnson SF  MEM @ TOR Sun 2:00pm,0.0,"$3,500",0.0,0.05,0.0,0.0,0.0,0.0,0.0,0.0
-158,D. Hernandez Dewan Hernandez PF  MEM @ TOR OUT Sun 2:00pm,0.0,"$3,500",0.0,0.03,0.0,0.0,0.0,0.0,0.0,0.0
-159,P. Watson Paul Watson SG  MEM @ TOR Sun 2:00pm,0.0,"$3,500",0.0,0.05,0.0,0.0,0.0,0.0,0.0,0.0
-160,L. Samanic Luka Samanic PF  SA @ NO Sun 3:00pm,0.0,"$3,500",0.0,0.12,0.0,0.0,0.0,0.0,0.0,0.0
-161,H. Whiteside Hassan Whiteside C  PHI @ POR OUT Sun 6:30pm,0.0,"$4,200",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-162,E. Moore E'Twaun Moore SF  SA @ NO Sun 3:00pm,0.0,"$3,500",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-163,Q. Weatherspoon Quinndary Weatherspoon SG  SA @ NO Sun 3:00pm,0.0,"$3,500",0.0,0.06,0.0,0.0,0.0,0.0,0.0,0.0
-164,J. Adams Jaylen Adams PG  PHI @ POR GTD Sun 6:30pm,0.0,"$3,500",0.0,0.12,0.0,0.0,0.0,0.0,0.0,0.0
-165,P. Beverley Patrick Beverley PG  BKN @ LAC OUT Sun 9:00pm,0.0,"$4,200",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-166,J. Crawford Jamal Crawford SG  BKN @ LAC GTD Sun 9:00pm,0.0,"$3,600",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-167,D. Jeffries DaQuan Jeffries SF  HOU @ SAC Sun 8:00pm,0.0,"$3,500",0.0,0.05,0.0,0.0,0.0,0.0,0.0,0.0
-168,J. Harris Joe Harris SF  BKN @ LAC OUT Sun 9:00pm,0.0,"$5,000",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-169,M. Harrell Montrezl Harrell C  BKN @ LAC OUT Sun 9:00pm,0.0,"$5,800",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-170,J. Motley Johnathan Motley PF  BKN @ LAC Sun 9:00pm,0.0,"$3,500",0.0,0.04,0.0,0.0,0.0,0.0,0.0,0.0
-171,J. Allen Jarrett Allen C  BKN @ LAC OUT Sun 9:00pm,0.0,"$7,200",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-172,C. LeVert Caris LeVert SG  BKN @ LAC OUT Sun 9:00pm,0.0,"$7,800",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-173,K. Guy Kyle Guy SG  HOU @ SAC Sun 8:00pm,0.0,"$3,500",0.0,0.03,0.0,0.0,0.0,0.0,0.0,0.0
-174,R. Holmes Richaun Holmes PF  HOU @ SAC OUT Sun 8:00pm,0.0,"$5,100",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-175,J. Hoard Jaylen Hoard SF  PHI @ POR Sun 6:30pm,0.0,"$3,500",0.0,0.08,0.0,0.0,0.0,0.0,0.0,0.0
-176,M. Shayok Marial Shayok SG  PHI @ POR Sun 6:30pm,0.0,"$3,500",0.0,0.06,0.0,0.0,0.0,0.0,0.0,0.0
-177,B. Simmons Ben Simmons PG  PHI @ POR OUT Sun 6:30pm,0.0,"$7,900",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-178,N. Pelle Norvel Pelle Jr. PF  PHI @ POR Sun 6:30pm,0.0,"$3,500",0.0,0.11,0.0,0.0,0.0,0.0,0.0,0.0
-179,E. Gordon Eric Gordon SF  HOU @ SAC OUT Sun 8:00pm,0.0,"$3,800",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-180,B. Caboclo Bruno Caboclo SF  HOU @ SAC OUT Sun 8:00pm,0.0,"$3,500",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-181,R. Westbrook Russell Westbrook PG  HOU @ SAC OUT Sun 8:00pm,0.0,"$9,400",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-182,K. O'Quinn Kyle O'Quinn C  PHI @ POR Sun 6:30pm,0.0,"$3,600",0.0,0.15,0.0,0.0,0.0,0.0,0.0,0.0
+0,Russell Westbrook PGHOU  @  SA OUTTue 2:00pm,57.3,"$9,300",6.16,36.65,30.8,8.3,8.9,1.9,0.4,4.7
+1,Giannis Antetokounmpo PFMIL  @  WSHTue 9:00pm,55.9,"$10,500",5.32,29.57,28.1,12.3,5.2,1,1,3.2
+2,Luka Doncic PG/SFPOR  @  DAL OUTTue 6:30pm,55.7,"$10,800",5.15,33.84,28.4,9,9,1.3,0.3,4.2
+3,Nikola Vucevic CBKN  @  ORLTue 1:00pm,50.8,"$8,600",5.9,34.72,24,12.4,4.1,0.9,0.9,1.6
+4,Damian Lillard PGPOR  @  DALTue 6:30pm,50.5,"$9,800",5.16,38.31,30.3,4.3,7.8,1,0.3,3
+5,Jusuf Nurkic PF/CPOR  @  DALTue 6:30pm,47.4,"$9,000",5.27,33.46,18.2,10.5,4.3,1.8,2.8,2.6
+6,Kristaps Porzingis CPOR  @  DAL OUTTue 6:30pm,44.4,"$8,200",5.41,33.25,21.4,10,2,0.7,2.1,1.8
+7,Devin Booker PG/SGPHX  @  PHITue 4:30pm,43,"$8,800",4.88,36.03,27.3,4,6.4,0.8,0.2,3.9
+8,Deandre Ayton PF/CPHX  @  PHITue 4:30pm,41.1,"$7,900",5.2,32.9,18.5,11.8,1.7,0.7,1.7,2.2
+9,Jayson Tatum SF/PFBOS  @  MEMTue 5:00pm,40.8,"$7,800",5.23,34.86,22.4,6.9,3.1,1.5,0.9,2.1
+10,Jonas Valanciunas CBOS  @  MEMTue 5:00pm,40.7,"$7,200",5.65,30.93,17.2,12.6,2.1,0.4,1.5,2
+11,DeMar DeRozan SF/PFHOU  @  SATue 2:00pm,39.4,"$8,000",4.93,33.83,22.9,5.3,5.7,1,0.3,2.6
+12,Ja Morant PGBOS  @  MEMTue 5:00pm,37.8,"$8,300",4.56,33.61,19.8,3.9,8,1,0.2,3.5
+13,C.J. McCollum PG/SGPOR  @  DALTue 6:30pm,37.6,"$7,600",4.95,37.43,22.8,4.2,4.2,0.8,0.6,2
+14,Dejounte Murray PGHOU  @  SATue 2:00pm,37.3,"$6,200",6.01,33.12,16.1,6.8,5.8,2,0.4,2.5
+15,Tobias Harris SF/PFPHX  @  PHITue 4:30pm,37.1,"$8,500",4.36,36.58,21,6.8,3.2,0.8,0.5,1.6
+16,Thomas Bryant CMIL  @  WSHTue 9:00pm,36.6,"$7,300",5.01,32.12,17.5,9.8,2.5,0.4,1.3,1.7
+17,Lonzo Ball PGNO  @  SACTue 9:00pm,35.3,"$6,400",5.52,32.38,13.9,5.9,7.2,1.4,0.4,3.1
+18,Robert Covington SF/PFHOU  @  SATue 2:00pm,35.3,"$6,700",5.27,35.24,16.3,7.4,1.6,2,1.4,1.6
+19,Kemba Walker PGBOS  @  MEMTue 5:00pm,34.7,"$6,500",5.33,31.71,18.8,4,5,1,0.4,2.2
+20,Ricky Rubio PGPHX  @  PHITue 4:30pm,34.5,"$6,600",5.22,31.29,13.5,4.6,8.5,1.5,0.1,2.7
+21,Bogdan Bogdanovic SG/SFNO  @  SACTue 9:00pm,33.4,"$5,500",6.07,35.11,18.9,3.8,4,1.3,0.3,2.1
+22,Jaylen Brown SGBOS  @  MEMTue 5:00pm,32.9,"$7,100",4.63,34.39,18.7,6.4,2.1,1.1,0.4,2.2
+23,Brandon Clarke PF/CBOS  @  MEMTue 5:00pm,32.6,"$5,000",6.52,29.97,15.9,8.6,1.8,0.7,1.1,1.3
+24,Derrick White PG/SGHOU  @  SATue 2:00pm,31.7,"$6,100",5.19,33.25,15.5,4.4,4.6,0.9,1.1,1.9
+25,Chris Chiozza PGBKN  @  ORLTue 1:00pm,31.6,"$4,400",7.19,30.17,13.3,4.1,6.1,1.8,0.3,2.4
+26,Al Horford PF/CPHX  @  PHITue 4:30pm,31.3,"$6,300",4.97,30.67,13.4,6.9,3.8,0.8,0.9,1.1
+27,Gordon Hayward SF/PFBOS  @  MEMTue 5:00pm,31.3,"$7,000",4.46,32.97,15.3,6.4,3.8,0.8,0.4,2
+28,Donte DiVincenzo PG/SGMIL  @  WSHTue 9:00pm,31.1,"$3,900",7.97,32.21,13.6,6.5,3.3,1.9,0.3,1.9
+29,Troy Brown SG/SFMIL  @  WSHTue 9:00pm,30.9,"$6,000",5.15,32.48,15.1,6.3,3,1.6,0.2,1.4
+30,Buddy Hield SG/SFNO  @  SACTue 9:00pm,30.8,"$4,800",6.41,28.88,18.7,4.3,2.7,0.8,0.2,2.2
+31,Ishmael Smith PGMIL  @  WSHTue 9:00pm,30.5,"$5,300",5.75,31.85,13.7,4,5.8,1.2,0.5,1.8
+32,Derrick Favors CNO  @  SACTue 9:00pm,30.4,"$5,100",5.95,26.21,10.9,10.2,1.5,0.7,1.1,1.3
+33,Rui Hachimura PF/CMIL  @  WSHTue 9:00pm,29.7,"$5,700",5.21,35.14,16,6.7,2.2,1,0.2,1.4
+34,Sterling Brown SG/SFMIL  @  WSHTue 9:00pm,29.3,"$3,000",9.77,35.36,12.3,8.4,2.2,1.4,0.3,2.2
+35,Tim Hardaway Jr. SG/SFPOR  @  DALTue 6:30pm,29.2,"$5,700",5.12,33.2,18.4,3.7,2.3,0.7,0.1,1.1
+36,Nemanja Bjelica PF/CNO  @  SACTue 9:00pm,29.1,"$4,900",5.94,28.98,13.7,6.8,2.7,0.8,0.5,1.4
+37,Jakob Poeltl CHOU  @  SATue 2:00pm,28.2,"$5,500",5.12,26.67,8.4,9,2.2,0.8,2.1,1.2
+38,Marcus Smart PG/SGBOS  @  MEMTue 5:00pm,27.8,"$5,600",4.96,32.07,11.3,3.9,4.7,1.6,0.5,1.7
+39,Shake Milton PGPHX  @  PHITue 4:30pm,27.7,"$5,100",5.44,30.21,15.2,3.5,3.5,1.1,0.3,2.1
+40,Alec Burks PG/SGPHX  @  PHITue 4:30pm,27.5,"$4,300",6.4,26.89,15.2,4.2,2.9,1,0.3,1.5
+41,Dillon Brooks SGBOS  @  MEMTue 5:00pm,27.2,"$5,400",5.03,29.54,17.1,3.3,2.1,0.9,0.4,1.6
+42,Jeremiah Martin PGBKN  @  ORLTue 1:00pm,27.1,"$3,400",7.97,24.6,13.2,3.6,3.6,1.5,0.5,1.5
+43,Markelle Fultz PG/SGBKN  @  ORLTue 1:00pm,27.1,"$4,600",5.89,29.52,12.3,3.5,5.5,1.3,0.2,2.2
+44,Cory Joseph PGNO  @  SACTue 9:00pm,27.1,"$3,700",7.31,36.65,11,4,5.5,1.2,0.4,1.9
+45,Robin Lopez CMIL  @  WSHTue 9:00pm,26.9,"$3,000",8.97,31.27,13.3,6.6,1.4,0.3,1.6,2.2
+46,Carmelo Anthony SF/PFPOR  @  DALTue 6:30pm,26.9,"$5,600",4.8,34.17,14.1,6.2,1.7,0.8,0.5,1.8
+47,Rodions Kurucs PF/CBKN  @  ORLTue 1:00pm,26.7,"$4,100",6.52,28.42,13.5,6.3,2,1,0.3,2
+48,Seth Curry SGPOR  @  DALTue 6:30pm,26.6,"$4,200",6.33,32.4,16.4,2.9,2.5,0.9,0.1,1.3
+49,Daniel Theis CBOS  @  MEMTue 5:00pm,26.2,"$5,400",4.84,30.28,10.1,7,1.8,0.9,1.5,1.2
+50,Maxi Kleber PF/CPOR  @  DALTue 6:30pm,26.1,"$4,500",5.79,30.06,11.4,6.9,1.3,0.3,1.5,0.9
+51,Gary Trent Jr. SG/SFPOR  @  DALTue 6:30pm,26,"$5,100",5.09,35.69,14.4,3.6,1.7,1.3,0.4,0.7
+52,Frank Mason PGMIL  @  WSHTue 9:00pm,25.9,"$3,000",8.62,29.26,10.5,4.4,6.2,0.9,0,3.4
+53,Kyle Anderson SF/PFBOS  @  MEMTue 5:00pm,25.8,"$4,400",5.86,30.09,8.6,7.1,3.2,1.2,0.8,1.5
+54,Danuel House Jr. SF/PFHOU  @  SATue 2:00pm,25.6,"$4,500",5.69,34.25,13.3,4.6,1.5,1.2,0.6,1
+55,Cameron Johnson SF/PFPHX  @  PHITue 4:30pm,25.2,"$5,200",4.84,30.99,12.9,4.7,1.8,0.9,0.5,0.9
+56,J.J. Redick SG/SFNO  @  SACTue 9:00pm,25,"$4,300",5.81,27.17,16.2,2.7,2.2,0.4,0.2,1.2
+57,Tyler Johnson PG/SGBKN  @  ORLTue 1:00pm,24.9,"$5,100",4.88,30.54,13.9,3,3.1,0.9,0.4,1.3
+58,Rudy Gay SF/PFHOU  @  SATue 2:00pm,24.8,"$5,800",4.27,25.07,12.5,6.2,1.8,0.5,0.5,1.6
+59,Thanasis Antetokounmpo PFMIL  @  WSHTue 9:00pm,24.7,"$3,000",8.23,20.26,11.5,5,3.3,1.4,0.3,2.8
+60,Dorian Finney-Smith SF/PFPOR  @  DAL OUTTue 6:30pm,24.7,"$5,000",4.94,32.84,10.4,6.6,1.8,0.8,0.7,1.1
+61,D.J. Augustin PGBKN  @  ORLTue 1:00pm,24.4,"$4,500",5.42,27.04,12.7,2.3,5,0.7,0,1.5
+62,Harrison Barnes SF/PFNO  @  SACTue 9:00pm,24.1,"$4,700",5.13,33.51,14.3,4.3,2,0.5,0.2,1.3
+63,Josh Hart SFNO  @  SACTue 9:00pm,24.1,"$4,100",5.87,26.88,11.3,5.9,1.5,1,0.4,1.2
+64,Mikal Bridges SG/SFPHX  @  PHITue 4:30pm,23.5,"$4,800",4.9,32.69,9.8,4.6,2,1.7,0.8,1.1
+65,Timothe Luwawu-Cabarrot SF/PFBKN  @  ORLTue 1:00pm,23.2,"$3,600",6.44,28.14,13.9,4.1,1.1,0.7,0.4,1.2
+66,Ersan Ilyasova PF/CMIL  @  WSHTue 9:00pm,23.1,"$3,500",6.61,22.09,10.6,6.7,1.4,0.6,0.3,0.8
+67,Ben McLemore SG/SFHOU  @  SATue 2:00pm,22.9,"$4,700",4.86,30.62,14.6,2.8,0.9,0.9,0.2,0.9
+68,Justin Anderson SF/PFBKN  @  ORLTue 1:00pm,22.6,"$3,000",7.53,23.01,10.5,4.8,1.9,0,1.4,0.5
+69,Shabazz Napier PG/SGMIL  @  WSHTue 9:00pm,22.3,"$4,400",5.06,21.65,10.2,2.5,4.2,1.3,0.2,2
+70,Gary Clark PF/CBKN  @  ORLTue 1:00pm,22.2,"$3,400",6.53,28.33,9.9,6.2,0.8,0.5,0.8,0.5
+71,Dario Saric SF/PFPHX  @  PHI GTDTue 4:30pm,22.1,"$4,500",4.92,24.35,10.2,5.9,1.8,0.6,0.3,1.2
+72,De'Anthony Melton PG/SGBOS  @  MEMTue 5:00pm,22.1,"$3,900",5.66,22.45,8.8,4.1,3.5,1.4,0.3,1.9
+73,P.J. Tucker CHOU  @  SATue 2:00pm,21.5,"$4,100",5.23,34.82,7,6.8,1.7,1.1,0.5,1.1
+74,Hassan Whiteside CPOR  @  DAL OUTTue 6:30pm,21.3,"$4,200",5.08,17.43,8.6,7.1,0.6,0.2,1.5,1
+75,Harry Giles PF/CNO  @  SACTue 9:00pm,20.9,"$3,200",6.53,18.14,10,5.6,1.4,0.8,0.4,1.2
+76,Furkan Korkmaz SGPHX  @  PHITue 4:30pm,20.7,"$3,000",6.88,27.3,12.2,2.8,1.4,0.9,0.2,1.1
+77,Keldon Johnson SFHOU  @  SATue 2:00pm,20.5,"$3,900",5.26,23.58,10.8,4.4,1.2,1,0.2,0.8
+78,James Ennis SF/PFBKN  @  ORLTue 1:00pm,20.4,"$4,300",4.75,25.9,9.8,5.3,1.2,0.7,0.4,1.1
+79,Lonnie Walker SG/SFHOU  @  SATue 2:00pm,20.4,"$4,300",4.74,23.9,10.9,3.7,1.7,0.9,0.3,1.1
+80,Grayson Allen SGBOS  @  MEMTue 5:00pm,20.2,"$4,300",4.69,26.05,11.5,3.3,2.2,0.5,0,1.3
+81,Dzanan Musa PFBKN  @  ORLTue 1:00pm,20,"$3,000",6.68,25.4,9,4.7,2.4,1.1,0,2.4
+82,Zach Collins PF/CPOR  @  DALTue 6:30pm,19.7,"$4,300",4.57,28,7.6,6.4,1.8,0.4,0.4,1.3
+83,Frank Jackson PGNO  @  SACTue 9:00pm,19.6,"$3,100",6.33,25.46,11.2,2.9,2.1,0.6,0.3,1.6
+84,Jerome Robinson SG/SFMIL  @  WSHTue 9:00pm,19.6,"$4,700",4.17,29.33,8.7,4,2.3,0.8,0.5,1.6
+85,Alex Len CNO  @  SAC GTDTue 9:00pm,19.5,"$3,500",5.56,18.48,8.5,6,0.9,0.3,0.9,0.9
+86,Austin Rivers PG/SGHOU  @  SATue 2:00pm,19.3,"$4,100",4.7,25.88,10.8,2.7,1.8,0.8,0.2,0.7
+87,Donta Hall CBKN  @  ORLTue 1:00pm,19.1,"$3,200",5.96,23.39,5.8,7.5,0.9,0.6,0.9,0.9
+88,Isaac Bonga SF/PFMIL  @  WSHTue 9:00pm,19.1,"$3,700",5.15,26.32,7.4,5,1.7,1.2,0.4,1.3
+89,Drew Eubanks PF/CHOU  @  SATue 2:00pm,18.5,"$3,800",4.87,18.16,7.7,6,0.8,0.3,1.1,1.6
+90,Pat Connaughton SG/SFMIL  @  WSHTue 9:00pm,18.3,"$3,400",5.38,25.1,6.5,5.6,2,0.3,0.6,0.9
+91,Jevon Carter PG/SGPHX  @  PHITue 4:30pm,18.3,"$3,200",5.71,23.67,7.7,3.3,1.9,1.3,0.4,1
+92,Jeff Green CHOU  @  SATue 2:00pm,18.2,"$4,100",4.44,21.68,10.5,3.2,1,0.7,0.3,1
+93,Matisse Thybulle SG/SFPHX  @  PHITue 4:30pm,18.1,"$3,200",5.66,27.12,7.1,2.5,1.8,1.7,0.9,1.2
+94,Nicolo Melli PF/CNO  @  SACTue 9:00pm,17.9,"$3,900",4.58,20.55,8.6,3.5,1.4,0.9,0.4,1
+95,Cameron Payne PGPHX  @  PHITue 4:30pm,17.6,"$4,000",4.41,17.52,7.6,2.9,1.4,1.2,0.8,0.8
+96,B.J. Johnson SGBKN  @  ORLTue 1:00pm,17.6,"$3,000",5.87,17.72,8.9,3.6,1.3,1.1,0.2,1.3
+97,Wesley Iwundu SFBKN  @  ORLTue 1:00pm,17.5,"$3,200",5.47,25.65,8.3,3.8,1.5,0.8,0.3,0.6
+98,D.J. Wilson PF/CMIL  @  WSHTue 9:00pm,16.4,"$3,000",5.46,17.29,6.4,4.9,1.5,0.4,0.4,0.7
+99,Jaxson Hayes CNO  @  SACTue 9:00pm,16.3,"$3,400",4.79,16.92,7.4,4.1,0.9,0.4,1,0.8
+100,Anthony Tolliver PFBOS  @  MEMTue 5:00pm,16.1,"$3,500",4.59,26.14,6.8,4.6,1.2,0.4,0.4,1.2
+101,Trey Burke PGPOR  @  DALTue 6:30pm,15.4,"$4,000",3.86,17.57,7.8,1.7,2.9,0.5,0,0.8
+102,E'Twaun Moore SG/SFNO  @  SACTue 9:00pm,15.3,"$3,300",4.62,19.61,8,2.4,1.6,0.4,0.4,0.7
+103,Moritz Wagner PF/CMIL  @  WSHTue 9:00pm,15,"$3,200",4.7,13.6,6.7,4.1,1,0.5,0.5,1.1
+104,Khem Birch PF/CBKN  @  ORLTue 1:00pm,14.9,"$3,300",4.51,20.15,5.4,4.9,1,0.4,0.7,0.7
+105,Aron Baynes CPHX  @  PHI OUTTue 4:30pm,14.7,"$4,600",3.2,13.11,7,3.6,1,0.3,0.5,0.7
+106,Glenn Robinson III SFPHX  @  PHI OUTTue 4:30pm,14.7,"$3,800",3.86,20.85,7.8,2.8,1,0.5,0.3,0.5
+107,Lance Thomas PF/CBKN  @  ORLTue 1:00pm,14.1,"$3,100",4.56,25.94,7,3.7,1.9,0,0,1.9
+108,Delon Wright PG/SGPOR  @  DALTue 6:30pm,14.1,"$3,600",3.91,15.63,4.9,2.7,2.5,0.8,0.3,0.8
+109,Gorgui Dieng CBOS  @  MEMTue 5:00pm,14.1,"$3,400",4.14,12.9,5.2,4.1,0.8,0.6,0.7,0.7
+110,Brad Wanamaker PGBOS  @  MEMTue 5:00pm,13.5,"$3,600",3.76,16.97,6,1.9,2.3,0.8,0.2,1.1
+111,Marco Belinelli SFHOU  @  SA OUTTue 2:00pm,13.4,"$3,200",4.19,18.87,7.5,2.2,1.4,0.3,0,0.5
+112,Jahlil Okafor CNO  @  SACTue 9:00pm,12.9,"$3,000",4.31,12.67,6.1,3.5,0.9,0.2,0.6,1
+113,Mike Scott PFPHX  @  PHI OUTTue 4:30pm,12.8,"$3,600",3.55,19.72,5.9,3.7,0.9,0.3,0,0.6
+114,Justin James SG/SFNO  @  SAC GTDTue 9:00pm,12.8,"$3,000",4.26,13.9,6.1,2.1,1.1,0.6,0.6,0.6
+115,Mario Hezonja SFPOR  @  DALTue 6:30pm,12.7,"$3,400",3.74,17.4,5.2,3.5,1,0.7,0.2,0.8
+116,Nickeil Alexander-Walker PG/SGNO  @  SAC OUTTue 9:00pm,12.6,"$3,200",3.94,13.71,6.3,2.2,1.7,0.5,0,1.2
+117,Vic Law PFBKN  @  ORLTue 1:00pm,12.5,"$3,000",4.17,12,4.8,3.2,1.4,0.8,0.2,0.8
+118,DaQuan Jeffries SFNO  @  SACTue 9:00pm,12.5,"$3,100",4.02,10.58,6.5,2.2,0.8,0.8,0,0
+119,Kenrich Williams PFNO  @  SAC GTDTue 9:00pm,12.2,"$3,100",3.94,14.68,5.7,3,0.9,0.4,0.3,0.4
+120,Enes Kanter CBOS  @  MEMTue 5:00pm,11.9,"$3,200",3.73,10.12,4.9,4.3,0.5,0.2,0.4,0.6
+121,Raul Neto PGPHX  @  PHITue 4:30pm,11,"$3,000",3.65,13,5,1.4,2,0.5,0.2,1
+122,Robert Williams CBOS  @  MEMTue 5:00pm,10.1,"$3,300",3.05,9.03,3,3,0.5,0.5,0.9,0.5
+123,Jerian Grant PGMIL  @  WSHTue 9:00pm,9.8,"$3,000",3.25,10.03,5.7,1,1,0.2,0.3,0.2
+124,Corey Brewer SG/SFNO  @  SACTue 9:00pm,7,"$3,000",2.33,9.77,1.8,2.3,0.2,1.1,0,0.4
+125,Admiral Schofield SF/PFMIL  @  WSHTue 9:00pm,6.7,"$3,000",2.24,9.68,3,1.3,0.5,0.5,0.1,0.2
+126,Justin Jackson SF/PFPOR  @  DALTue 6:30pm,6.6,"$3,200",2.05,10.38,3.4,1.4,0.6,0.2,0,0.2
+127,Jabari Parker PFNO  @  SACTue 9:00pm,6.1,"$3,100",1.98,5.85,3.3,1.3,0.4,0.4,0,0.4
+128,Boban Marjanovic CPOR  @  DALTue 6:30pm,6.1,"$3,600",1.69,4.63,3.1,1.9,0.2,0.1,0.1,0.3
+129,Chris Clemons PGHOU  @  SATue 2:00pm,4.8,"$3,000",1.58,6.16,3.1,0.6,0.6,0,0,0.6
+130,Semi Ojeleye PFBOS  @  MEMTue 5:00pm,4.6,"$3,000",1.52,8.78,1.9,1.2,0.3,0.3,0,0.3
+131,Zylan Cheatham SF/PFNO  @  SACTue 9:00pm,3.6,"$3,000",1.18,6.28,1.1,1.2,0.4,0.1,0.2,0.5
+132,Josh Jackson SF/PFBOS  @  MEMTue 5:00pm,2,"$3,300",0.61,1.8,1,0.4,0.2,0.1,0,0.1
+133,Quinndary Weatherspoon SGHOU  @  SATue 2:00pm,1.9,"$3,000",0.64,3.06,0.7,0.3,0.5,0.1,0,0.2
+134,Kyle O'Quinn CPHX  @  PHITue 4:30pm,1.7,"$3,000",0.57,1.48,0.5,0.6,0.2,0,0.1,0.1
+135,Chimezie Metu PF/CHOU  @  SATue 2:00pm,1.1,"$3,000",0.36,0.73,0.4,0.3,0.1,0,0.1,0.1
+136,Ian Mahinmi CMIL  @  WSHTue 9:00pm,1.1,"$3,000",0.35,0.55,0.3,0.2,0.1,0.1,0.1,0.1
+137,Michael Kidd-Gilchrist PFPOR  @  DALTue 6:30pm,0.8,"$3,000",0.26,1,0.3,0.3,0.1,0,0,0.1
+138,Javonte Green PG/SGBOS  @  MEMTue 5:00pm,0.8,"$3,000",0.25,0.66,0.2,0.2,0.1,0.1,0,0.1
+139,Anfernee Simons PG/SGPOR  @  DALTue 6:30pm,0.7,"$3,000",0.24,1.05,0.4,0.1,0.1,0,0,0
+140,Luc Mbah a Moute PF/CHOU  @  SATue 2:00pm,0.7,"$3,000",0.23,1.21,0.4,0.1,0.1,0,0,0
+141,Anzejs Pasecniks CMIL  @  WSHTue 9:00pm,0.7,"$3,000",0.22,0.71,0.3,0.2,0.1,0,0,0.1
+142,Johnathan Williams CMIL  @  WSHTue 9:00pm,0.7,"$3,000",0.22,0.34,0.1,0.2,0.1,0,0.1,0.1
+143,Tremont Waters PGBOS  @  MEMTue 5:00pm,0.6,"$3,000",0.21,0.57,0.2,0.1,0.1,0.1,0,0.1
+144,Tyson Chandler CHOU  @  SATue 2:00pm,0.6,"$3,000",0.19,1.04,0.2,0.3,0,0,0,0
+145,Frank Kaminsky CPHX  @  PHITue 4:30pm,0.6,"$3,000",0.19,0.68,0.3,0.1,0.1,0,0,0
+146,Grant Williams SF/PFBOS  @  MEMTue 5:00pm,0.5,"$3,000",0.17,0.46,0.1,0.2,0.1,0,0,0
+147,John Konchar SFBOS  @  MEMTue 5:00pm,0.5,"$3,000",0.17,0.38,0.1,0.2,0.1,0,0,0
+148,DeMarre Carroll PF/CHOU  @  SATue 2:00pm,0.4,"$3,000",0.14,0.71,0.2,0.1,0.1,0,0,0.1
+149,Ty Jerome PG/SGPHX  @  PHITue 4:30pm,0.4,"$3,000",0.13,0.44,0.1,0.1,0.1,0,0,0
+150,Cheick Diallo PF/CPHX  @  PHITue 4:30pm,0.4,"$3,000",0.12,0.41,0.1,0.2,0,0,0,0
+151,Marko Guduric SG/SFBOS  @  MEMTue 5:00pm,0.3,"$3,000",0.11,0.42,0.1,0.1,0.1,0,0,0.1
+152,Yuta Watanabe SF/PFBOS  @  MEMTue 5:00pm,0.3,"$3,000",0.11,0.52,0.2,0.1,0,0,0,0
+153,Carsen Edwards PGBOS  @  MEMTue 5:00pm,0.3,"$3,000",0.11,0.47,0.2,0.1,0,0,0,0
+154,Nassir Little SF/PFPOR  @  DALTue 6:30pm,0.3,"$3,000",0.11,0.62,0.2,0.1,0,0,0,0
+155,Bruno Caboclo PF/CHOU  @  SA OUTTue 2:00pm,0.2,"$3,000",0.08,0.37,0.1,0.1,0,0,0,0
+156,Wenyen Gabriel PFPOR  @  DALTue 6:30pm,0.2,"$3,000",0.08,0.32,0.1,0.1,0,0,0,0
+157,Moses Brown CPOR  @  DALTue 6:30pm,0.2,"$3,000",0.08,0.19,0.1,0.1,0,0,0,0
+158,Vincent Poirier CBOS  @  MEMTue 5:00pm,0.2,"$3,000",0.08,0.35,0.1,0.1,0,0,0,0
+159,Romeo Langford SG/SFBOS  @  MEMTue 5:00pm,0.2,"$3,000",0.08,0.36,0.1,0.1,0,0,0,0
+160,Luka Samanic PFHOU  @  SATue 2:00pm,0,"$3,000",0,0.12,0,0,0,0,0,0
+161,Bryn Forbes PG/SGHOU  @  SA OUTTue 2:00pm,0,"$3,100",0,0,0,0,0,0,0,0
+162,Patrick Mills PG/SGHOU  @  SATue 2:00pm,0,"$3,300",0,0,0,0,0,0,0,0
+163,William Howard SFHOU  @  SATue 2:00pm,0,"$3,000",0,0.07,0,0,0,0,0,0
+164,Tyler Zeller CHOU  @  SA OUTTue 2:00pm,0,"$3,000",0,0,0,0,0,0,0,0
+165,Josh Richardson SG/SFPHX  @  PHITue 4:30pm,0,"$5,400",0,0,0,0,0,0,0,0
+166,Marial Shayok SFPHX  @  PHITue 4:30pm,0,"$3,000",0,0.05,0,0,0,0,0,0
+167,Elie Okobo PG/SGPHX  @  PHITue 4:30pm,0,"$3,000",0,0,0,0,0,0,0,0
+168,Eric Gordon SG/SFHOU  @  SA OUTTue 2:00pm,0,"$3,900",0,0,0,0,0,0,0,0
+169,Joel Embiid CPHX  @  PHITue 4:30pm,0,"$10,000",0,0,0,0,0,0,0,0
+170,Mohamed Bamba CBKN  @  ORLTue 1:00pm,0,"$3,000",0,0,0,0,0,0,0,0
+171,Terrence Ross SG/SFBKN  @  ORLTue 1:00pm,0,"$5,400",0,0,0,0,0,0,0,0
+172,Evan Fournier SGBKN  @  ORL OUTTue 1:00pm,0,"$5,600",0,0,0,0,0,0,0,0
+173,Jamal Crawford PG/SGBKN  @  ORL GTDTue 1:00pm,0,"$4,300",0,0,0,0,0,0,0,0
+174,Garrett Temple SG/SFBKN  @  ORLTue 1:00pm,0,"$5,000",0,0,0,0,0,0,0,0
+175,Michael Carter-Williams PG/SGBKN  @  ORLTue 1:00pm,0,"$4,100",0,0,0,0,0,0,0,0
+176,Aaron Gordon SF/PFBKN  @  ORL OUTTue 1:00pm,0,"$6,800",0,0,0,0,0,0,0,0
+177,Tariq Owens CPHX  @  PHITue 4:30pm,0,"$3,000",0,0.05,0,0,0,0,0,0
+178,Jarrett Allen CBKN  @  ORLTue 1:00pm,0,"$6,900",0,0,0,0,0,0,0,0
+179,Caris LeVert SGBKN  @  ORLTue 1:00pm,0,"$7,400",0,0,0,0,0,0,0,0
+180,Joe Harris SG/SFBKN  @  ORLTue 1:00pm,0,"$5,200",0,0,0,0,0,0,0,0
+181,James Harden PG/SGHOU  @  SATue 2:00pm,0,"$11,400",0,0,0,0,0,0,0,0
+182,Jaylen Hoard SFPOR  @  DALTue 6:30pm,0,"$3,000",0,0.08,0,0,0,0,0,0
+183,Jrue Holiday PG/SGNO  @  SACTue 9:00pm,0,"$8,700",0,0,0,0,0,0,0,0
+184,Cameron Reynolds SGMIL  @  WSHTue 9:00pm,0,"$3,000",0,0.13,0,0,0,0,0,0
+185,Gary Payton II PG/SGMIL  @  WSHTue 9:00pm,0,"$3,000",0,0,0,0,0,0,0,0
+186,Jarrod Uthoff PFMIL  @  WSHTue 9:00pm,0,"$3,000",0,0.18,0,0,0,0,0,0
+187,Kent Bazemore SG/SFNO  @  SAC GTDTue 9:00pm,0,"$3,800",0,0,0,0,0,0,0,0
+188,Richaun Holmes CNO  @  SAC OUTTue 9:00pm,0,"$4,500",0,0,0,0,0,0,0,0
+189,Kyle Guy PGNO  @  SACTue 9:00pm,0,"$3,000",0,0.03,0,0,0,0,0,0
+190,Zion Williamson PF/CNO  @  SACTue 9:00pm,0,"$7,500",0,0,0,0,0,0,0,0
+191,De'Aaron Fox PGNO  @  SACTue 9:00pm,0,"$8,100",0,0,0,0,0,0,0,0
+192,Brandon Ingram SF/PFNO  @  SACTue 9:00pm,0,"$8,400",0,0,0,0,0,0,0,0
+193,Khris Middleton SFMIL  @  WSHTue 9:00pm,0,"$7,700",0,0,0,0,0,0,0,0
+194,Marvin Williams PFMIL  @  WSHTue 9:00pm,0,"$3,300",0,0.1,0,0,0,0,0,0
+195,Tacko Fall CBOS  @  MEMTue 5:00pm,0,"$3,000",0,0.05,0,0,0,0,0,0
+196,Tyus Jones PGBOS  @  MEM OUTTue 5:00pm,0,"$3,800",0,0,0,0,0,0,0,0
+197,Josh Reaves SGPOR  @  DALTue 6:30pm,0,"$3,000",0,0.01,0,0,0,0,0,0
+198,Jaylen Adams PGPOR  @  DAL GTDTue 6:30pm,0,"$3,000",0,0.12,0,0,0,0,0,0
+199,Wesley Matthews SGMIL  @  WSH OUTTue 9:00pm,0,"$3,400",0,0,0,0,0,0,0,0
+200,Eric Bledsoe PGMIL  @  WSHTue 9:00pm,0,"$5,500",0,0,0,0,0,0,0,0
+201,Kyle Korver SG/SFMIL  @  WSHTue 9:00pm,0,"$3,200",0,0,0,0,0,0,0,0
+202,George Hill PGMIL  @  WSHTue 9:00pm,0,"$3,900",0,0,0,0,0,0,0,0
+203,Brook Lopez CMIL  @  WSHTue 9:00pm,0,"$5,300",0,0,0,0,0,0,0,0
+204,Jose Juan Barea PG/SGPOR  @  DALTue 6:30pm,0,"$3,100",0,0,0,0,0,0,0,0
