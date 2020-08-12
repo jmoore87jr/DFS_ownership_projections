@@ -1,35 +1,33 @@
 **NAME**\
-DFS Ownership Projection Calculator (NBA only right now)
+DFS Ownership Projection Calculator (DraftKings NBA only right now)
 
 **WHAT**\
-Since most DFS players in 2020 are using good projections to make their lineups, I generate ownership projections by taking projections from various sites, optimizing 100 lineups with each of them, and calculating the average ownership for each player. 
+Since most DFS players in 2020 are using good player projections to make their lineups, I aggregate the most popular ones and use them to create ownership projections.
 
 **WHY**\
 I find many of the ownership projections online to be innacurate. 
 
 **HOW IT WORKS**\
-The 'get' functions in get_projections.py take DFS projection tables from various websites, munges them, and returns a 2-column pd.DataFrame of 'Player' and 'FPts'. I was able to scrape from numberfire but it's easier to download from Rotoballers and Sabersim and save the .csv's locally before running the script.
+format_sheets.py transforms raw projection tables from the sites into a standard format. These are then merged to the DraftKings export sheet.
 
-These projections are then joined to the DK export .csv, which pydfs-lineup-optimizer uses to generate 100 optimal lineups. For each set of optimal lineups, the average ownership of each player is calculated and saved in a 2-column pd.DataFrame of 'Player' and 'Ownership'. We can then average the ownership for each player from each set of lineups and return our 'Projected ownership' table.
+In project_ownership.py the altered sheet is fed to pydfs-lineup-optimizer, which generates n optimal lineups from each site's player projections. 
 
-**HOW TO USE IT**\
-Scraping has been blocked or problematic everywhere. 
+Then, exposure (percentage of lineups containing the player) to each player is calculated for each site, then weighted according to the site's popularity (we use Twitter followers as a proxy for popularity - thanks Chris).
 
-1. Go to each site and download or copy/paste the projections in your project folder as {site_name}_raw.csv. Leave them as they are on the site; the program will format them.
+**HOW TO USE IT**\ 
+
+1. Go to each site (RotoGrinders, FantasyLabs, Numberfire, SaberSim) and download the projections into your project folder as {site_name}_raw.csv. Leave them as they are on the site; the program will format them.
 
 2. Run format_sheets.py
 
-When prompted, enter the url of the DraftKings export file for the slate you want to play. 
+When prompted, enter the url of the DraftKings export file for the slate you want to play. csv's will be saved with formatted player projections from each of the 4 sites.
 
-The .csv of ownership projections will be saved as 'ownership_projections.csv'.
+3. Run project_ownership.py
 
-3. Run generate_lineups.py
-
-Enter the sites you want to use, separated by comma. i.e.:
-'Enter the sites to be used: sabersim, rotoballer, numberfire'
-
-Then enter the number of lineups to generate from each site, wait a few seconds (150 lineups per site will probably take 2-3 minutes), and you should have your ownership projections saved in the project folder.
+Then enter the number of lineups to generate from each site, hit enter, ownership projections will be saved in the project folder. 100 lineups per site will take a couple minutes.
 
 
-**PLANNED CHANGES**
-* Add support for other paid sites like  FantasyLabs and Awesemo. The ownership projections are already alright, but adding more pay sites should make them much better.
+**PLANNED CHANGES**\
+* Jupyter notebook demonstration
+* Figure out the correct function to boost ownership projections for high salary players; they typically are never below 5-10% in big GPPs
+* It would be lovely to push a button and have all the raw projections in a folder, but the sites don't make it easy! 
