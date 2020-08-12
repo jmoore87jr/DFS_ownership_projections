@@ -14,7 +14,7 @@ def format_rotogrinders_projections():
     return players_and_points
 
 def format_fantasylabs_projections():
-    df = pd.read_csv('fantasylabs_raw.csv')
+    df = pd.read_csv('fantasylabs_raw.csv').drop_duplicates()
     players_and_points = df[['PlayerName', 'FantasyPointsDraftKings']]
     players_and_points.columns = ['Player', 'FPts']
     return players_and_points
@@ -32,30 +32,11 @@ def format_numberfire_projections():
         #statuses = ['OUT', 'GTD']
         statuses = ['OUTTue', 'GTDTue']
         [split_field.remove(status) for status in split_field if status in statuses]
-        # grab player names of various lengths
-        # field sizes for scraping are 10,11,12,14
-        # field sizes for copy/paste are 6,7,8
-        if (len(split_field) == 6):
-            name = f"{split_field[0]} {split_field[1]}"
-        elif (len(split_field) == 7):
-            name = f"{split_field[0]} {split_field[1]} {split_field[2]}"
-        elif (len(split_field) == 8):
-            name = f"{split_field[0]} {split_field[1]} {split_field[2]} {split_field[3]}"
-        elif (len(split_field) == 10):
-            name = f"{split_field[2]} {split_field[3]}"
-        elif (len(split_field) == 11):
-            name = f"{split_field[2]} {split_field[3]} {split_field[4]}"
-        elif (len(split_field) == 12):
-            name = f"{split_field[3]} {split_field[4]} {split_field[5]}"
-        elif (len(split_field) == 14):
-            name = f"{split_field[4]} {split_field[5]} {split_field[6]} {split_field[7]}"
-        # testing
-        else:
-            print(len(split_field))
-            print(split_field)
+        name = ' '.join(split_field[:-4]) # strip names out of field
         df.iloc[row,1] = name
     players_and_points = df.iloc[:,[1,2]]
     players_and_points.columns = ['Player', 'FPts']
+    print(players_and_points)
     return players_and_points
 
 def format_sabersim_projections():
@@ -87,7 +68,7 @@ def merge_projections_to_DK(site):
     return new_sheet 
 
 def format_and_save(): # input site names separated by comma
-    sites = input("Which sites are being formatted? ").replace(',', '').split()
+    sites = ['rotogrinders', 'fantasylabs', 'numberfire', 'sabersim']
     for site in sites:
         sheet = merge_projections_to_DK(site)
         sheet.to_csv(f'{site}_projections.csv')
@@ -102,7 +83,7 @@ def format_and_save(): # input site names separated by comma
 #sabersim 10k
 
 #get_dk_salaries()
-format_and_save()
-
+#format_and_save()
+format_numberfire_projections()
 
 
