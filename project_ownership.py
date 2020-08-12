@@ -31,11 +31,21 @@ def get_player_projections():
         d2[k] = sum(v) / len(v)
     return d2
 
+def get_player_salaries():
+    df = pd.read_csv('sabersim_projections.csv')
+    df = df[['Name', 'Salary']]
+    d = defaultdict(int)
+    for name, salary in zip(df['Name'], df['Salary']):
+        d[name] = int(salary)
+    return d
+
 def calculate_exposure(): # input site names separated by comma, in order rotogrinders, fantasylabs, numberfire, sabersim
     sites = ['rotogrinders', 'fantasylabs', 'numberfire', 'sabersim']
     n = int(input("Enter the number of lineups to generate for each site: "))
     # get player projections
-    player_projections = get_player_projections()
+    projections = get_player_projections()
+    ## get salaries
+    salaries = get_player_salaries()
     # calculate ownership projections
     exposures = []
     for site in sites:
@@ -72,17 +82,17 @@ def calculate_exposure(): # input site names separated by comma, in order rotogr
     d3 = defaultdict(int)
     for name in d2.keys(): # strip names so they match projections
         stripped_name = ' '.join(name.split()[:-2])
-        d3[stripped_name] = [d2[name], player_projections[stripped_name]]
+        d3[stripped_name] = [round(d2[name], 2), 
+                            round(projections[stripped_name] / salaries[stripped_name] * 1000, 2)]
     # convert back into DataFrame
     results = pd.DataFrame.from_dict(d3, orient='index', 
-              columns=['projected_ownership', 'projected_FPts']).sort_values(by=['projected_ownership'], 
+              columns=['projected_ownership', 'pts/$']).sort_values(by=['projected_ownership'], 
               ascending=False)
     print(results)
-    ##results.to_csv('ownership_projections.csv')
-    ##print("Ownership projections saved.")
+    results.to_csv('ownership_projections.csv')
+    print("Ownership projections saved.")
 
 calculate_exposure()
-#get_player_projections()
 
 # add salary -> add points/$ to results sheet
 # test which weights work best
