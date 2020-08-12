@@ -15,9 +15,28 @@ def generate_lineups(site, n):
         lineups.append(lineup_list)
     return pd.DataFrame(lineups, columns=headers)
 
+def get_player_projections():
+    sites = ['rotogrinders', 'fantasylabs', 'numberfire', 'sabersim']
+    df = pd.read_csv(f'{sites[0]}_projections.csv')
+    d = defaultdict(list)
+    for i,name in enumerate(df['Name']): # make dictionary w/ empty lists
+        d[name] = []
+    for site in sites: # fill list
+        df = pd.read_csv(f'{site}_projections.csv') 
+        for i,name in enumerate(df['Name']):
+            d[name].append(df['AvgPointsPerGame'][i])
+    # average (better than weights for projections I think)
+    d2 = defaultdict(int)
+    for k,v in d.items():
+        d2[k] = sum(v) / len(v)
+    return d2
+
 def calculate_exposure(): # input site names separated by comma, in order rotogrinders, fantasylabs, numberfire, sabersim
     sites = ['rotogrinders', 'fantasylabs', 'numberfire', 'sabersim']
     n = int(input("Enter the number of lineups to generate for each site: "))
+    # get player projections
+    player_projections = get_player_projections()
+    # calculate ownership projections
     exposures = []
     for site in sites:
         df = generate_lineups(site, n)
@@ -48,20 +67,24 @@ def calculate_exposure(): # input site names separated by comma, in order rotogr
             site_sum += e * weights[site]
         d[str(name)].append(site_sum) # pydfs objects don't behave as keys
     d2 = defaultdict(int)
-    for k,v in d.items(): 
+    for k,v in d.items(): # add third column as another value in this dict
         d2[k] = sum(v)
+    d3 = defaultdict(int)
+    for name in d2.keys(): # strip names so they match projections
+        stripped_name = ' '.join(name.split()[:-2])
+        d3[stripped_name] = [d2[name], player_projections[stripped_name]]
     # convert back into DataFrame
-    results = pd.DataFrame.from_dict(d2, orient='index', 
-              columns=['projected_ownership']).sort_values(by=['projected_ownership'], 
+    results = pd.DataFrame.from_dict(d3, orient='index', 
+              columns=['projected_ownership', 'projected_FPts']).sort_values(by=['projected_ownership'], 
               ascending=False)
     print(results)
-    results.to_csv('ownership_projections.csv')
-    print("Ownership projections saved.")
+    ##results.to_csv('ownership_projections.csv')
+    ##print("Ownership projections saved.")
 
 calculate_exposure()
+#get_player_projections()
 
-
-# add points/$ to results sheet
+# add salary -> add points/$ to results sheet
 # test which weights work best
 # test which # of lineups works best
 # ownership %s need to be smoothed out; perhaps try a points/$ model?
