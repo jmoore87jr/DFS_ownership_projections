@@ -11,14 +11,11 @@ def format_rotogrinders_projections():
     df = pd.read_csv('rotogrinders_raw.csv')
     players_and_points = df[['name', 'fpts']]
     players_and_points.columns = ['Player', 'FPts']
-    print(players_and_points.info())
-    print(players_and_points.head())
     return players_and_points
 
-def format_sabersim_projections():
-    df = pd.read_csv('sabersim_raw.csv')
-    df['SS Projection'] = pd.to_numeric(df['SS Projection'])
-    players_and_points = df[['Name', 'SS Projection']]
+def format_fantasylabs_projections():
+    df = pd.read_csv('fantasylabs_raw.csv')
+    players_and_points = df[['PlayerName', 'FantasyPointsDraftKings']]
     players_and_points.columns = ['Player', 'FPts']
     return players_and_points
     
@@ -61,8 +58,12 @@ def format_numberfire_projections():
     players_and_points.columns = ['Player', 'FPts']
     return players_and_points
 
-def format_fantasylabs_projections():
-    pass 
+def format_sabersim_projections():
+    df = pd.read_csv('sabersim_raw.csv')
+    df['SS Projection'] = pd.to_numeric(df['SS Projection'])
+    players_and_points = df[['Name', 'SS Projection']]
+    players_and_points.columns = ['Player', 'FPts']
+    return players_and_points
 
 def format_rotoballer_projections():
     df = pd.read_csv('rotoballer_raw.csv')

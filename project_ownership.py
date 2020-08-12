@@ -15,8 +15,8 @@ def generate_lineups(site, n):
         lineups.append(lineup_list)
     return pd.DataFrame(lineups, columns=headers)
 
-def calculate_exposure(): # input site names separated by comma, in order rotogrinders, numberfire, sabersim
-    sites = input("Enter the sites to be used: ").replace(',', '').split()
+def calculate_exposure(): # input site names separated by comma, in order rotogrinders, fantasylabs, numberfire, sabersim
+    sites = ['rotogrinders', 'fantasylabs', 'numberfire', 'sabersim']
     n = int(input("Enter the number of lineups to generate for each site: "))
     exposures = []
     for site in sites:
@@ -39,22 +39,24 @@ def calculate_exposure(): # input site names separated by comma, in order rotogr
     # so I have to create 2 dictionaries, one with all the values and one with the sum
     d = defaultdict(list)
     list_index = list(df.index)
+    weights = {'rotogrinders': 0.526, 'fantasylabs': 0.263, 'numberfire': 0.158, 'sabersim': 0.053}
     for i,name in enumerate(list_index):
+        site_sum = 0
         for site in sites:
             col = f'{site}_exposure'
             e = df.loc[df.index == list_index[i], col].sum()
-            d[str(name)].append(e) # pydfs objects don't behave as keys
+            site_sum += e * weights[site]
+        d[str(name)].append(site_sum) # pydfs objects don't behave as keys
     d2 = defaultdict(int)
-    weights = {'rotogrinders': 0.714, 'numberfire': 0.214, 'sabersim': 0.071}
-    for k,v in d.items(): ##when Labs gets added, change weights and change 3 to 4
-        d2[k] = (v[0]*weights['rotogrinders'] + v[1]*weights['numberfire'] + 
-        v[2]*weights['sabersim']) * 3  / len(sites)
+    for k,v in d.items(): 
+        d2[k] = sum(v)
     # convert back into DataFrame
     results = pd.DataFrame.from_dict(d2, orient='index', 
-    columns=['projected_ownership']).sort_values(by=['projected_ownership'], ascending=False)
+              columns=['projected_ownership']).sort_values(by=['projected_ownership'], 
+              ascending=False)
     print(results)
-    ##results.to_csv('ownership_projections.csv')
-    ##print("Ownership projections saved.")
+    results.to_csv('ownership_projections.csv')
+    print("Ownership projections saved.")
 
 calculate_exposure()
 
@@ -62,3 +64,5 @@ calculate_exposure()
 # add points/$ to results sheet
 # test which weights work best
 # test which # of lineups works best
+# ownership %s need to be smoothed out; perhaps try a points/$ model?
+# people fade huge chalk some, but low-owned stars always get at least 5-10%
