@@ -97,8 +97,8 @@ def calculate_exposure(): # input site names separated by comma, in order rotogr
               columns=['projected_ownership', 'value', 'pts', 'salary', 'stdev']).sort_values(by=['projected_ownership'], 
               ascending=False)
     print(results)
-    ##results.to_csv('ownership_projections.csv')
-    ##print("Ownership projections saved.")
+    results.to_csv('ownership_projections.csv')
+    print("Ownership projections saved.")
 
 calculate_exposure()
 
