@@ -15,7 +15,6 @@ In project_ownership.py the altered sheet is fed to pydfs-lineup-optimizer, whic
 Then, exposure (percentage of lineups containing the player) to each player is calculated for each site, then weighted according to the site's popularity (we use Twitter followers as a proxy for popularity - thanks Chris).
 
 **HOW TO USE IT**\ 
-
 1. Go to each site (RotoGrinders, FantasyLabs, Numberfire, SaberSim) and download the projections into your project folder as {site_name}_raw.csv. Leave them as they are on the site; the program will format them.
 
 2. Run format_sheets.py
