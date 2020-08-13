@@ -2,6 +2,9 @@ import pandas as pd
 from pydfs_lineup_optimizer import get_optimizer, Site, Sport
 from collections import defaultdict
 
+sites = ['rotogrinders', 'fantasylabs', 'numberfire', 'sabersim']
+weights = {'rotogrinders': 0.526, 'fantasylabs': 0.263, 'numberfire': 0.158, 'sabersim': 0.053}
+
 def generate_lineups(site, n):
     optimizer = get_optimizer(Site.DRAFTKINGS, Sport.BASKETBALL)
     optimizer.load_players_from_csv(f'{site}_projections.csv')
@@ -16,7 +19,6 @@ def generate_lineups(site, n):
     return pd.DataFrame(lineups, columns=headers)
 
 def get_player_projections():
-    sites = ['rotogrinders', 'fantasylabs', 'numberfire', 'sabersim']
     df = pd.read_csv(f'{sites[0]}_projections.csv')
     d = defaultdict(list)
     for i,name in enumerate(df['Name']): # make dictionary w/ empty lists
@@ -39,13 +41,19 @@ def get_player_salaries():
         d[name] = int(salary)
     return d
 
+def get_stdev():
+    df = pd.read_csv('sabersim_raw.csv')
+    df = df[['Name', 'dk_std']]
+    d = defaultdict(int)
+    for name, std in zip(df['Name'], df['dk_std']):
+        d[name] = int(std)
+    return d
+
 def calculate_exposure(): # input site names separated by comma, in order rotogrinders, fantasylabs, numberfire, sabersim
-    sites = ['rotogrinders', 'fantasylabs', 'numberfire', 'sabersim']
     n = int(input("Enter the number of lineups to generate for each site: "))
-    # get player projections
     projections = get_player_projections()
-    ## get salaries
     salaries = get_player_salaries()
+    stdev = get_stdev()
     # calculate ownership projections
     exposures = []
     for site in sites:
@@ -68,7 +76,6 @@ def calculate_exposure(): # input site names separated by comma, in order rotogr
     # so I have to create 2 dictionaries, one with all the values and one with the sum
     d = defaultdict(list)
     list_index = list(df.index)
-    weights = {'rotogrinders': 0.526, 'fantasylabs': 0.263, 'numberfire': 0.158, 'sabersim': 0.053}
     for i,name in enumerate(list_index):
         site_sum = 0
         for site in sites:
@@ -83,18 +90,19 @@ def calculate_exposure(): # input site names separated by comma, in order rotogr
     for name in d2.keys(): # strip names so they match projections
         stripped_name = ' '.join(name.split()[:-2])
         d3[stripped_name] = [round(d2[name], 2), 
-                            round(projections[stripped_name] / salaries[stripped_name] * 1000, 2)]
+                            round(projections[stripped_name] / (salaries[stripped_name]+0.1) * 1000, 2),
+                            round(projections[stripped_name], salaries[stripped_name], stdev[stripped_name]]
     # convert back into DataFrame
     results = pd.DataFrame.from_dict(d3, orient='index', 
-              columns=['projected_ownership', 'pts/$']).sort_values(by=['projected_ownership'], 
+              columns=['projected_ownership', 'value', 'pts', 'salary']).sort_values(by=['projected_ownership'], 
               ascending=False)
     print(results)
-    results.to_csv('ownership_projections.csv')
-    print("Ownership projections saved.")
+    ##results.to_csv('ownership_projections.csv')
+    ##print("Ownership projections saved.")
 
 calculate_exposure()
 
-# add salary -> add points/$ to results sheet
+# add sabersim stdev column
 # test which weights work best
 # test which # of lineups works best
 # ownership %s need to be smoothed out; perhaps try a points/$ model?

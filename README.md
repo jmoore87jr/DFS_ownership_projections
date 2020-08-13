@@ -28,6 +28,6 @@ Then enter the number of lineups to generate from each site, hit enter, ownershi
 
 
 **PLANNED CHANGES**\
-* Jupyter notebook demonstration
+* Jupyter notebook
 * Figure out the correct function to boost ownership projections for high salary players; they typically are never below 5-10% in big GPPs
 * It would be lovely to push a button and have all the raw projections in a folder, but the sites don't make it easy! 

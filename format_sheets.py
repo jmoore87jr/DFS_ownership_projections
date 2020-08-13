@@ -1,5 +1,7 @@
 import pandas as pd
 
+sites = ['rotogrinders', 'fantasylabs', 'numberfire', 'sabersim']
+
 def get_dk_salaries(): # user inputs DK export URL for a slate, .csv is downloaded
     url = input("Enter the DraftKings export URL for your slate: ")
     df = pd.read_csv(url)
@@ -20,23 +22,20 @@ def format_fantasylabs_projections():
     return players_and_points
     
 def format_numberfire_projections():
-    # think this is getting fanduel projections...
-    # we need to change this by hand because 3pm isn't in the sheet
-    #list_of_tables = pd.read_html('https://www.numberfire.com/nba/daily-fantasy/daily-basketball-projections')
-    #df = list_of_tables[3]
+    ### I'm still adjusting the headers here, need to change that
     df = pd.read_csv('numberfire_raw.csv')
     for row in range(1,len(df.index)): # separate names out of 2nd column
         name_field = df.iloc[row,1]
         split_field = str(name_field).split()
         # remove OUT and GTD statuses
-        #statuses = ['OUT', 'GTD']
-        statuses = ['OUTTue', 'GTDTue']
+        statuses = ['OUTMon', 'GTDMon', 'OUTTue', 'GTDTue', 'OUTWed',
+                    'GTDWed', 'OUTThu', 'GTDThu', 'OUTFri', 'GTDFri',
+                    'OUTSat', 'GTDSat', 'OUTSun', 'GTDSun']
         [split_field.remove(status) for status in split_field if status in statuses]
         name = ' '.join(split_field[:-4]) # strip names out of field
         df.iloc[row,1] = name
     players_and_points = df.iloc[:,[1,2]]
     players_and_points.columns = ['Player', 'FPts']
-    print(players_and_points)
     return players_and_points
 
 def format_sabersim_projections():
@@ -68,22 +67,20 @@ def merge_projections_to_DK(site):
     return new_sheet 
 
 def format_and_save(): # input site names separated by comma
-    sites = ['rotogrinders', 'fantasylabs', 'numberfire', 'sabersim']
     for site in sites:
         sheet = merge_projections_to_DK(site)
         sheet.to_csv(f'{site}_projections.csv')
         print(f"{site} projections saved.")
 
-## weights based on twitter popularity?
-#rotogrinders 100k
-#labs 50k
-#numberfire 30k
-#awesemo 20k
-#fantasycruncher 15k
-#sabersim 10k
+# weights based on twitter popularity
+# rotogrinders 100k
+# labs 50k
+# numberfire 30k
+# awesemo 20k
+# fantasycruncher 15k
+# sabersim 10k
 
-#get_dk_salaries()
-#format_and_save()
-format_numberfire_projections()
+get_dk_salaries()
+format_and_save()
 
 
