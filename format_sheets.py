@@ -80,7 +80,7 @@ def format_and_save(): # input site names separated by comma
 # fantasycruncher 15k
 # sabersim 10k
 
-get_dk_salaries()
+#get_dk_salaries()
 format_and_save()
 
 
