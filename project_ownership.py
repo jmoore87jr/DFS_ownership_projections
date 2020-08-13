@@ -42,7 +42,7 @@ def get_player_salaries():
     return d
 
 def get_stdev():
-    df = pd.read_csv('sabersim_raw.csv')
+    df = pd.read_csv('sabersim_raw.csv').fillna(0)
     df = df[['Name', 'dk_std']]
     d = defaultdict(int)
     for name, std in zip(df['Name'], df['dk_std']):
@@ -91,10 +91,10 @@ def calculate_exposure(): # input site names separated by comma, in order rotogr
         stripped_name = ' '.join(name.split()[:-2])
         d3[stripped_name] = [round(d2[name], 2), 
                             round(projections[stripped_name] / (salaries[stripped_name]+0.1) * 1000, 2),
-                            round(projections[stripped_name], salaries[stripped_name], stdev[stripped_name]]
+                            round(projections[stripped_name]), salaries[stripped_name], stdev[stripped_name]]
     # convert back into DataFrame
     results = pd.DataFrame.from_dict(d3, orient='index', 
-              columns=['projected_ownership', 'value', 'pts', 'salary']).sort_values(by=['projected_ownership'], 
+              columns=['projected_ownership', 'value', 'pts', 'salary', 'stdev']).sort_values(by=['projected_ownership'], 
               ascending=False)
     print(results)
     ##results.to_csv('ownership_projections.csv')
