@@ -1,6 +1,6 @@
 import pandas as pd
 
-sites = ['rotogrinders', 'fantasylabs', 'numberfire', 'sabersim']
+sites = ['rotogrinders', 'fantasylabs', 'sabersim']
 
 def get_dk_salaries(): # user inputs DK export URL for a slate, .csv is downloaded
     url = input("Enter the DraftKings export URL for your slate: ")
@@ -17,7 +17,7 @@ def format_rotogrinders_projections():
 
 def format_fantasylabs_projections():
     df = pd.read_csv('fantasylabs_raw.csv').drop_duplicates()
-    players_and_points = df[['PlayerName', 'FantasyPointsDraftKings']]
+    players_and_points = df[['Name', 'Projection']]
     players_and_points.columns = ['Player', 'FPts']
     return players_and_points
     

@@ -2,8 +2,8 @@ import pandas as pd
 from pydfs_lineup_optimizer import get_optimizer, Site, Sport
 from collections import defaultdict
 
-sites = ['rotogrinders', 'fantasylabs', 'numberfire', 'sabersim']
-weights = {'rotogrinders': 0.526, 'fantasylabs': 0.263, 'numberfire': 0.158, 'sabersim': 0.053}
+sites = ['rotogrinders', 'fantasylabs', 'sabersim']
+weights = {'rotogrinders': 0.5, 'fantasylabs': 0.3, 'sabersim': 0.2}
 
 def generate_lineups(site, n):
     optimizer = get_optimizer(Site.DRAFTKINGS, Sport.BASKETBALL)
@@ -92,7 +92,7 @@ def calculate_exposure(): # input site names separated by comma, in order rotogr
         d3[stripped_name] = [round(d2[name], 2), 
                             round(projections[stripped_name] / (salaries[stripped_name]+0.1) * 1000, 2),
                             round(projections[stripped_name]), salaries[stripped_name], 
-                            round((stdev[stripped_name] / (salaries[stripped_name]+0.1)) * 10000, 2]
+                            round(stdev[stripped_name] / (salaries[stripped_name]+0.1) * 1000, 2)]
     # convert back into DataFrame
     results = pd.DataFrame.from_dict(d3, orient='index', 
               columns=['projected_ownership', 'value', 'pts', 'salary', 'stdev/$']).sort_values(by=['projected_ownership'], 
