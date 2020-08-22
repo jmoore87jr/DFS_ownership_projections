@@ -1,6 +1,6 @@
 import pandas as pd
 
-sites = ['rotogrinders', 'fantasylabs', 'sabersim']
+sites = ['rotogrinders', 'fantasylabs', 'awesemo', 'sabersim']
 
 def get_dk_salaries(): # user inputs DK export URL for a slate, .csv is downloaded
     url = input("Enter the DraftKings export URL for your slate: ")
@@ -20,21 +20,10 @@ def format_fantasylabs_projections():
     players_and_points = df[['Name', 'Projection']]
     players_and_points.columns = ['Player', 'FPts']
     return players_and_points
-    
-def format_numberfire_projections():
-    ### I'm still adjusting the headers here, need to change that
-    df = pd.read_csv('numberfire_raw.csv')
-    for row in range(1,len(df.index)): # separate names out of 2nd column
-        name_field = df.iloc[row,1]
-        split_field = str(name_field).split()
-        # remove OUT and GTD statuses
-        statuses = ['OUTMon', 'GTDMon', 'OUTTue', 'GTDTue', 'OUTWed',
-                    'GTDWed', 'OUTThu', 'GTDThu', 'OUTFri', 'GTDFri',
-                    'OUTSat', 'GTDSat', 'OUTSun', 'GTDSun']
-        [split_field.remove(status) for status in split_field if status in statuses]
-        name = ' '.join(split_field[:-4]) # strip names out of field
-        df.iloc[row,1] = name
-    players_and_points = df.iloc[:,[1,2]]
+
+def format_awesemo_projections():
+    df = pd.read_csv('awesemo_raw.csv').drop_duplicates()
+    players_and_points = df[['Name', 'Fpts']]
     players_and_points.columns = ['Player', 'FPts']
     return players_and_points
 
@@ -42,17 +31,6 @@ def format_sabersim_projections():
     df = pd.read_csv('sabersim_raw.csv')
     df['SS Projection'] = pd.to_numeric(df['SS Projection'])
     players_and_points = df[['Name', 'SS Projection']]
-    players_and_points.columns = ['Player', 'FPts']
-    return players_and_points
-
-def format_rotoballer_projections():
-    df = pd.read_csv('rotoballer_raw.csv')
-    # format salary and player name
-    df['Unnamed: 4'] = df['Unnamed: 4'].map(lambda x: float(x.strip('$').replace(',', '')))
-    df['Player, POS'] = df['Player, POS'].map(lambda x: x.split(',', 1)[0])
-    # calculate FPts
-    df['FPts'] = df['Unnamed: 4'] * df['Proj / $1K.1'] / 1000
-    players_and_points = df[['Player, POS', 'FPts']]
     players_and_points.columns = ['Player', 'FPts']
     return players_and_points
 
@@ -75,7 +53,6 @@ def format_and_save(): # input site names separated by comma
 # weights based on twitter popularity
 # rotogrinders 100k
 # labs 50k
-# numberfire 30k
 # awesemo 20k
 # fantasycruncher 15k
 # sabersim 10k

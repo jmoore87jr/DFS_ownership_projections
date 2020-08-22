@@ -2,8 +2,8 @@ import pandas as pd
 from pydfs_lineup_optimizer import get_optimizer, Site, Sport
 from collections import defaultdict
 
-sites = ['rotogrinders', 'fantasylabs', 'sabersim']
-weights = {'rotogrinders': 0.5, 'fantasylabs': 0.3, 'sabersim': 0.2}
+sites = ['rotogrinders', 'fantasylabs', 'awesemo', 'sabersim']
+weights = {'rotogrinders': 0.3, 'fantasylabs': 0.3, 'awesemo': 0.2, 'sabersim': 0.2}
 
 def generate_lineups(site, n):
     optimizer = get_optimizer(Site.DRAFTKINGS, Sport.BASKETBALL)

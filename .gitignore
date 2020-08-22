@@ -3,10 +3,6 @@ dk_salaries.csv
 lineups.csv
 numberfire_projections.csv
 daily_process.txt
-numberfire_raw.csv
-numberfire_raw.csv:Zone.Identifier
-rotoballer_raw.csv
-rotoballer_raw.csv:Zone.Identifier
 sabersim_raw.csv
 sabersim_raw.csv:Zone.Identifier
 sabersim_projections.csv
@@ -16,3 +12,6 @@ rotogrinders_projections.csv
 fantasylabs_raw.csv
 fantasylabs_raw.csv:Zone.Identifier
 fantasylabs_projections.csv
+awesemo_raw.csv
+awesemo_raw.csv:Zone.Identifier
+awesemo_projections.csv
