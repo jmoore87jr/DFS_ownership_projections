@@ -1,6 +1,6 @@
 import pandas as pd
 
-sites = ['rotogrinders', 'fantasylabs', 'awesemo', 'sabersim']
+sites = ['rotogrinders', 'awesemo', 'sabersim']
 
 def get_dk_salaries(): # user inputs DK export URL for a slate, .csv is downloaded
     url = input("Enter the DraftKings export URL for your slate: ")
