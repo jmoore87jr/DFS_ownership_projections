@@ -56,49 +56,58 @@ def generate_players(n):
             act_pts = np.random.normal(exp_pts, 0.25*exp_pts)
             players["p{}".format(i)] = (position, int(salary), int(exp_pts), int(act_pts))
             i += 1
+    print("Players: ")
     for k in players.keys():
-        print("Players: ")
         print("{}: {}".format(k, players[k]))
     return players
 
-def optimize_lineup(n):
-    """Use pulp solver to find the optimal lineup using exp_pts"""
-    players = generate_players(n)
+def optimize_lineups(p, n):
+    """Use pulp solver to find top n optimal lineups using exp_pts from p players"""
+    players = generate_players(p)
+    high_score = 0
 
-    # define problem
-    prob = pl.LpProblem('DFS', pl.LpMaximize)
+    for _ in range(n):
+        # define problem
+        prob = pl.LpProblem('DFS', pl.LpMaximize)
 
-    # set solver
-    solver = pl.PULP_CBC_CMD()
+        # set solver
+        solver = pl.PULP_CBC_CMD()
 
-    # create decision variables
-    player_lineup = [pl.LpVariable('p{}'.format(i), cat='Binary') for i in range(n)]
+        # create decision variables
+        player_lineup = [pl.LpVariable('p{}'.format(i), cat='Binary') for i in range(p)]
 
-    # define constraints:
-    # sum of the binary player_lineup == 8 players
-    prob += (pl.lpSum(player_lineup[i] for i in range(n)) == 8)
-    # salary <= 50000
-    prob += (pl.lpSum(players['{}'.format(player_lineup[i])][1]*player_lineup[i] for i in range(n)) <= 50000)
+        # define constraints:
+        # sum of the binary player_lineup == 8 players
+        prob += (pl.lpSum(player_lineup[i] for i in range(p)) == 8)
+        # salary <= 50000
+        prob += (pl.lpSum(players['{}'.format(player_lineup[i])][1]*player_lineup[i] for i in range(p)) <= 50000)
+        # lineup projection less than the previous one
+        if high_score:
+            prob += (pl.lpSum(players['{}'.format(player_lineup[i])][2]*player_lineup[i] for i in range(p)) <= high_score - 1)
+        # define objective function:
+        # maximize sum of expected_points * player_lineup (binary)
+        prob += pl.lpSum(players['{}'.format(player_lineup[i])][2]*player_lineup[i] for i in range(p))
 
-    # define objective function:
-    # maximize sum of expected_points * player_lineup (binary)
-    prob += pl.lpSum(players['{}'.format(player_lineup[i])][2]*player_lineup[i] for i in range(n))
+        # solve
+        prob.solve(solver)
+        pl.LpStatus[prob.status]
 
-    # solve
-    prob.solve(solver)
-    pl.LpStatus[prob.status]
+        # print results
+        d = defaultdict()
+        for i,plyr in enumerate(player_lineup):
+            if pl.value(plyr) == 1:
+                d['p{}'.format(i)] = players['p{}'.format(i)]
+        results = pd.DataFrame.from_dict(d, orient='index', 
+                columns=['Position', 'Salary', 'exp_pts', 'act_pts'])
+        print(results)
+        print("Total Salary: {}".format(sum(results['Salary'])))
+        print("Expected score: {}".format(sum(results['exp_pts'])))
+        print("Actual score: {}".format(sum(results['act_pts'])))
+        print(results.index)
 
-    # print results
-    d = defaultdict()
-    for i,p in enumerate(player_lineup):
-        if pl.value(p) == 1:
-            d['p{}'.format(i)] = players['p{}'.format(i)]
-    results = pd.DataFrame.from_dict(d, orient='index', 
-            columns=['Position', 'Salary', 'exp_pts', 'act_pts'])
-    print(results)
-    print("Total Salary: {}".format(sum(results['Salary'])))
-    print("Expected score: {}".format(sum(results['exp_pts'])))
-    print("Actual score: {}".format(sum(results['act_pts'])))
+        # set high_score
+        high_score = sum(results['exp_pts'])
 
+        # store lineup as {'lineup_{}'.format(n): (results.index,  
 
-optimize_lineup(40)
+optimize_lineups(40, 2)
