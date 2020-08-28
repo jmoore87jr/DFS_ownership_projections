@@ -15,3 +15,12 @@ fantasylabs_projections.csv
 awesemo_raw.csv
 awesemo_raw.csv:Zone.Identifier
 awesemo_projections.csv
+821.csv
+822.csv
+823.csv
+824.csv
+821.csv:Zone.Identifier
+822.csv:Zone.Identifier
+823.csv:Zone.Identifier
+824.csv:Zone.Identifier
+pulp_playground.py
