@@ -3,11 +3,13 @@ and run n trials. Store % of lineups each player is in. Calculate $/lineup for e
 player. WRITE A PLAN FOR HOW TO DO THIS BEFORE STARTING"""
 
 # Plan:
+  # seems like the good lineups are winning too much...I think I either don't use int() for scores or I increase player variance
   # this could be a good time to use classes
-  # i'm not using positions - annoying to randomly generate and this will make optimization easier
+  # i'm not using positions - this will make optimization faster and it doesn't matter for toy game purposes
   # use random with list comp to generate dict of {player: [salary, expected_points, actual_points]}
     # can also use random to make sure I have some players with expected pts/$ 6 and some with 4
     # add ownership % to dict.values after simulating lineups
+    # can I correlate players somehow?
   # write function to optimize
     # objective: max(expected_points)
     # constraint 1: salary <= 50000
@@ -18,12 +20,6 @@ player. WRITE A PLAN FOR HOW TO DO THIS BEFORE STARTING"""
     # constraint 6: PF >= 1 and PF <= 3
     # constraint 7: C >= 1 and C <= 2
     # constraint 8: ownership - set max and min with ownership projection regression formula
-    # instructions: https://www.youtube.com/watch?v=cXHvC_FGx24
-    # import numpy as np
-    # from scipy.optimize import maximize
-    # define objective(x) function (sum of expected_points)
-    # define functions for each constraint
-    # how to create more than 1 lineup?
 
 
 import math
@@ -32,29 +28,21 @@ import numpy as np
 import pandas as pd
 from collections import defaultdict
 
-# approx 10 rotation players per team
-# avg salary 5784, stdev 2211
-# avg pts/$ 0.005, stdev 0.00052
-# avg stdev is 25%...about 18% for s=10k+ and 32% for s=3k
-# i'm just setting it equal to 0.25 * points, shouldn't matter here
-# avg salary for my players is 6000 (removing < 3000), don't think it matters for testing
-# stdev/pts is proportional to sqrt(salary) i.e. s=3000 players have 2x stdev/pts as s=10000
-
 def roundup(x): # round salaries to nearest 100
     return int(math.ceil(x / 100)) * 100
 
-def generate_players(n):
+def generate_players(p):
     """Generates dictionary with {player: salary, exp_pts, act_pts}"""
     players = {}
     positions = ['PG', 'SG', 'SF', 'PF', 'C']
     i = 0
-    while len(players) < n:
+    while len(players) < p:
         salary = roundup(np.random.normal(5784, 2211))
         if salary >= 3000: # only take salaries > 3000
             position = np.random.choice(positions)
             exp_pts = np.random.normal(salary*0.005, salary*0.00052)
-            act_pts = np.random.normal(exp_pts, 0.25*exp_pts)
-            players["p{}".format(i)] = (position, int(salary), int(exp_pts), int(act_pts))
+            act_pts = np.random.normal(exp_pts, exp_pts*0.25)
+            players["p{}".format(i)] = [position, int(salary), int(exp_pts), int(act_pts)]
             i += 1
     print("Players: ")
     for k in players.keys():
@@ -62,9 +50,13 @@ def generate_players(n):
     return players
 
 def optimize_lineups(p, n):
-    """Use pulp solver to find top n optimal lineups using exp_pts from p players"""
+    """Use pulp solver to find top n optimal lineups using exp_pts from p randomly generated players. Returns 
+    DataFrame of the optimal lineups and their actual scores"""
+
     players = generate_players(p)
+    
     high_score = 0
+    lnps = defaultdict()
 
     for _ in range(n):
         # define problem
@@ -84,30 +76,41 @@ def optimize_lineups(p, n):
         # lineup projection less than the previous one
         if high_score:
             prob += (pl.lpSum(players['{}'.format(player_lineup[i])][2]*player_lineup[i] for i in range(p)) <= high_score - 1)
+
         # define objective function:
         # maximize sum of expected_points * player_lineup (binary)
         prob += pl.lpSum(players['{}'.format(player_lineup[i])][2]*player_lineup[i] for i in range(p))
 
         # solve
         prob.solve(solver)
-        pl.LpStatus[prob.status]
 
-        # print results
+        # print results for each lineup
         d = defaultdict()
         for i,plyr in enumerate(player_lineup):
             if pl.value(plyr) == 1:
                 d['p{}'.format(i)] = players['p{}'.format(i)]
         results = pd.DataFrame.from_dict(d, orient='index', 
                 columns=['Position', 'Salary', 'exp_pts', 'act_pts'])
+        total_salary = sum(results['Salary'])
+        exp_score = sum(results['exp_pts'])
+        act_score = sum(results['act_pts'])
         print(results)
-        print("Total Salary: {}".format(sum(results['Salary'])))
-        print("Expected score: {}".format(sum(results['exp_pts'])))
-        print("Actual score: {}".format(sum(results['act_pts'])))
-        print(results.index)
+        print("Total Salary: {}".format(total_salary))
+        print("Expected score: {}".format(exp_score))
+        print("Actual score: {}".format(act_score))
 
         # set high_score
         high_score = sum(results['exp_pts'])
 
-        # store lineup as {'lineup_{}'.format(n): (results.index,  
+        # store lineup
+        lnps['lineup_{}'.format(_)] = (list(results.index), act_score)
 
-optimize_lineups(40, 2)
+    # print results  
+    result = pd.DataFrame.from_dict(lnps, orient='index', columns=['lineup', 'score']).sort_values('score', ascending=False)
+    for k in players.keys():
+        print("{}: {}".format(k, players[k]))
+    print(result)
+
+    return result
+
+
