@@ -93,7 +93,7 @@ def optimize_lineups(p, n):
                 columns=['Position', 'Salary', 'exp_pts', 'act_pts'])
         total_salary = sum(results['Salary'])
         exp_score = sum(results['exp_pts'])
-        act_score = sum(results['act_pts'])
+        act_score = sum(results['act_pts']) 
         print(results)
         print("Total Salary: {}".format(total_salary))
         print("Expected score: {}".format(exp_score))
@@ -111,6 +111,8 @@ def optimize_lineups(p, n):
         print("{}: {}".format(k, players[k]))
     print(result)
 
-    return result
+    return [results, result] # need to return more stuff from here in order to re-roll later and alter 'result'
+
+
 
 
