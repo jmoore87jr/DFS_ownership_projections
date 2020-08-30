@@ -5,20 +5,24 @@ import GPP_toy_lineups as lnps
 
 # adjust stdev for 3k vs. 10k
 
-n = 20 # number of lineups to generate
+n = 100 # number of lineups to generate
 p = 40 # number of random players to generate
-plyrs = lnps.generate_players(p) # generate players
 lineups = lnps.optimize_lineups(p, n) # generate lineups. lineups[1] is full lineup, lineups[0] is preliminary df for re-rolling act_score
-trials = 20
+# lineups[2] is players dict
+# rename these variables
+trials = 100
 
-def reroll_act_pts():
-    df = lineups[0]
-    act_scores = []
-    for _ in range(n):
-        for i, exp in enumerate(df['exp_pts']):
-            df['act_pts'][i] = np.random.normal(exp, exp*0.25)
-        act_scores.append(sum(df['act_pts']))
-    return act_scores
+def reroll_act_pts(): # is this re-rolling same values (for one lineup) n times instead of diff for each lineup? yes
+    full_lineups = lineups[1]
+    all_act_scores = []
+    for l in full_lineups['lineup']:
+        act_score = []
+        for p in l:
+            exp = lineups[2][p][2]
+            roll = np.random.normal(exp, exp*0.25)
+            act_score.append(roll)
+        all_act_scores.append(sum(act_score))
+    return all_act_scores
 
 
 
@@ -32,7 +36,6 @@ def calculate_player_ownership():
                 d[plyr] += 1
             else:
                 d[plyr] = 1
-    print(d)
     return d
 
 
@@ -51,7 +54,6 @@ def generate_prizepool(n):
             result.append(others) 
         else:
             result.append(0)
-    print(result)
     return result
     
 
@@ -60,7 +62,6 @@ def calculate_player_winnings(): # add re-roll here
     lineups[1]['score'] = reroll_act_pts() # re-roll points and sort
     lineups[1] = lineups[1].sort_values('score', ascending=False)
     lineups[1]['payout'] = generate_prizepool(n) # add prizepool
-    print(lineups[1])
     d = defaultdict()
     for i, _ in enumerate(lineups[1]):
         for plyr in lineups[1]['lineup'][i]:
@@ -70,7 +71,6 @@ def calculate_player_winnings(): # add re-roll here
                 d[plyr] = lineups[1]['payout'][i]
             else:   
                 d[plyr] += lineups[1]['payout'][i]
-    print(d)
     return d
 
 
@@ -88,18 +88,18 @@ def main(trials):
                     result[k] += v
                 else:
                     result[k] = v
-    print(result) # turn these into df or print line by line
-    print(ownership)
     d = defaultdict()
     for k, v in ownership.items():
         if k in result.keys():
-            d[k] = ('{}%'.format((v/n)*100), result[k] / t / (n*(v/n)))
+            d[k] = ('{}%'.format(round((v/n)*100), 1), result[k] / t / (n*(v/n)))
         else:
             d[k] = (0, 0)
-    r = pd.DataFrame.from_dict(d, orient='index', columns=['ownership', '$/contest/lineup'])
+    r = pd.DataFrame.from_dict(d, orient='index', columns=['ownership', 'buyins_won/contest/lineup'])
+    for k, v in lineups[2].items():
+            print("{}: {}".format(k,v))
     print(r)
-    print(sum(r['$/contest/lineup']))
+    print(sum(r['buyins_won/contest/lineup']))
 
 
 main(trials)
-
+#reroll_act_pts()

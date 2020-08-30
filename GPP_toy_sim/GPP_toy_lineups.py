@@ -42,7 +42,8 @@ def generate_players(p):
             position = np.random.choice(positions)
             exp_pts = np.random.normal(salary*0.005, salary*0.00052)
             act_pts = np.random.normal(exp_pts, exp_pts*0.25)
-            players["p{}".format(i)] = [position, int(salary), int(exp_pts), int(act_pts)]
+            exp_ppd = (exp_pts / salary) * 1000
+            players["p{}".format(i)] = [position, int(salary), int(exp_pts), round(exp_ppd, 2), int(act_pts)]
             i += 1
     print("Players: ")
     for k in players.keys():
@@ -90,7 +91,7 @@ def optimize_lineups(p, n):
             if pl.value(plyr) == 1:
                 d['p{}'.format(i)] = players['p{}'.format(i)]
         results = pd.DataFrame.from_dict(d, orient='index', 
-                columns=['Position', 'Salary', 'exp_pts', 'act_pts'])
+                columns=['Position', 'Salary', 'exp_pts', 'exp_ppd', 'act_pts'])
         total_salary = sum(results['Salary'])
         exp_score = sum(results['exp_pts'])
         act_score = sum(results['act_pts']) 
@@ -111,7 +112,7 @@ def optimize_lineups(p, n):
         print("{}: {}".format(k, players[k]))
     print(result)
 
-    return [results, result] # need to return more stuff from here in order to re-roll later and alter 'result'
+    return [results, result, players] # need to return more stuff from here in order to re-roll later and alter 'result'
 
 
 
