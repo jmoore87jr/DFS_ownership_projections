@@ -43,7 +43,7 @@ def generate_players(p):
             exp_pts = np.random.normal(salary*0.005, salary*0.00052)
             act_pts = np.random.normal(exp_pts, exp_pts*0.25)
             exp_ppd = (exp_pts / salary) * 1000
-            players["p{}".format(i)] = [position, int(salary), int(exp_pts), round(exp_ppd, 2), int(act_pts)]
+            players["p{}".format(i)] = [position, int(salary), round(exp_pts, 2), round(exp_ppd, 2), int(act_pts)]
             i += 1
     print("Players: ")
     for k in players.keys():
@@ -76,7 +76,7 @@ def optimize_lineups(p, n):
         prob += (pl.lpSum(players['{}'.format(player_lineup[i])][1]*player_lineup[i] for i in range(p)) <= 50000)
         # lineup projection less than the previous one
         if high_score:
-            prob += (pl.lpSum(players['{}'.format(player_lineup[i])][2]*player_lineup[i] for i in range(p)) <= high_score - 1)
+            prob += (pl.lpSum(players['{}'.format(player_lineup[i])][2]*player_lineup[i] for i in range(p)) <= high_score - .01)
 
         # define objective function:
         # maximize sum of expected_points * player_lineup (binary)

@@ -2,15 +2,17 @@ import numpy as np
 import pandas as pd
 from collections import defaultdict
 import GPP_toy_lineups as lnps
+import time
 
 # adjust stdev for 3k vs. 10k
 
+start = time.time()
 n = 100 # number of lineups to generate
 p = 40 # number of random players to generate
 lineups = lnps.optimize_lineups(p, n) # generate lineups. lineups[1] is full lineup, lineups[0] is preliminary df for re-rolling act_score
 # lineups[2] is players dict
 # rename these variables
-trials = 100
+trials = 10000
 
 def reroll_act_pts(): # is this re-rolling same values (for one lineup) n times instead of diff for each lineup? yes
     full_lineups = lineups[1]
@@ -97,9 +99,15 @@ def main(trials):
     r = pd.DataFrame.from_dict(d, orient='index', columns=['ownership', 'buyins_won/contest/lineup'])
     for k, v in lineups[2].items():
             print("{}: {}".format(k,v))
+    # normalize buyins_won/contest/lineup
+    num_owned = len(r.index)
+    raw_won = sum(r['buyins_won/contest/lineup'])
+    for i in range(num_owned):
+        r['buyins_won/contest/lineup'][i] = r['buyins_won/contest/lineup'][i] * (num_owned / raw_won)
     print(r)
-    print(sum(r['buyins_won/contest/lineup']))
-
+    print("Players owned in any lineup: {} out of {}".format(len(r.index), p))
+    print("Normalized buyins_won/contest/lineup won by owned players: {}".format(sum(r['buyins_won/contest/lineup'])))
 
 main(trials)
-#reroll_act_pts()
+end = time.time()
+print("Program took {} seconds.".format(end - start))
