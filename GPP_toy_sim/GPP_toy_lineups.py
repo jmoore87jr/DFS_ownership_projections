@@ -41,7 +41,7 @@ def generate_players(p):
         if salary >= 3000: # only take salaries > 3000
             position = np.random.choice(positions)
             exp_pts = np.random.normal(salary*0.005, salary*0.00052)
-            act_pts = np.random.normal(exp_pts, exp_pts*0.25)
+            act_pts = np.random.normal(exp_pts, (0.37 - 0.0035*exp_pts) * exp_pts)
             exp_ppd = (exp_pts / salary) * 1000
             players["p{}".format(i)] = [position, int(salary), round(exp_pts, 2), round(exp_ppd, 2), int(act_pts)]
             i += 1

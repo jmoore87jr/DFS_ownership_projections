@@ -4,15 +4,19 @@ from collections import defaultdict
 import GPP_toy_lineups as lnps
 import time
 
-# adjust stdev for 3k vs. 10k
+# build in correlation
 
 start = time.time()
-n = 100 # number of lineups to generate
+
+
+n = 200 # number of lineups to generate
 p = 40 # number of random players to generate
+trials = 10000 # number of GPP trials to run with the lineups you generated
+
 lineups = lnps.optimize_lineups(p, n) # generate lineups. lineups[1] is full lineup, lineups[0] is preliminary df for re-rolling act_score
+
 # lineups[2] is players dict
 # rename these variables
-trials = 10000
 
 def reroll_act_pts(): # is this re-rolling same values (for one lineup) n times instead of diff for each lineup? yes
     full_lineups = lineups[1]
@@ -21,7 +25,7 @@ def reroll_act_pts(): # is this re-rolling same values (for one lineup) n times 
         act_score = []
         for p in l:
             exp = lineups[2][p][2]
-            roll = np.random.normal(exp, exp*0.25)
+            roll = np.random.normal(exp, (0.37 - 0.0035*exp) * exp)
             act_score.append(roll)
         all_act_scores.append(sum(act_score))
     return all_act_scores
