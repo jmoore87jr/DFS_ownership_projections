@@ -4,23 +4,22 @@ from collections import defaultdict
 import GPP_toy_lineups as lnps
 import time
 
-# examine buyins_won/contest/lineup individual parts; seeing some unintuitive results for low owned expensive guys
-  # total winnings for 1000 trials should be 20000...calculate winnings / 8 for each player every trial?
+# comment calculate_player_winnings() and main()
+# buyins_won/lineup/trial still wrong; right for 100 lineups but not 150
 # build in correlation
 
 start = time.time()
 
 
-n = 100 # number of lineups to generate
+n = 150 # number of lineups to generate
 p = 40 # number of random players to generate
-trials = 100 # number of GPP trials to run with the lineups you generated
+trials = 100000 # number of GPP trials to run with the lineups you generated
 
-lineups = lnps.optimize_lineups(p, n) # generate lineups. lineups[1] is full lineup, lineups[0] is preliminary df for re-rolling act_score
-
-# lineups[2] is players dict
-# rename these variables
+lineups = lnps.optimize_lineups(p, n) # generate lineups. lineups[0] is preliminary df for re-rolling act_score, lineups[1] is full lineup, lineups[2] is players dict
+### rename all these lineup returns into something friendly
 
 def reroll_act_pts(): # is this re-rolling same values (for one lineup) n times instead of diff for each lineup? yes
+    """For each trial, each player's expected points and stdev stay the same, but the actual points need to be re-run"""
     full_lineups = lineups[1]
     all_act_scores = []
     for l in full_lineups['lineup']:
@@ -73,8 +72,8 @@ def calculate_player_winnings(): # add re-roll here
     lineups[1]['payout'] = generate_prizepool(n) # add prizepool
     print("After reroll and payout add: {}".format(lineups[1].head(11)))
     d = defaultdict()
-    for i, _ in enumerate(lineups[1]): ### winnings not calculated correctly for 100 lineups instead of 20; not counting all the cashes
-        for plyr in lineups[1]['lineup'][i]:
+    for i, lineup in enumerate(lineups[1]['lineup']):
+        for plyr in lineup:
             if lineups[1]['payout'][i] == 0:
                 break
             if plyr not in d.keys():
@@ -104,18 +103,13 @@ def main(trials):
     for k, v in ownership.items():
         if k in result.keys():
             owned = round((v/n)*100, 1)
-            d[k] = ['{}%'.format(owned), result[k], result[k]*(1/owned)/t]
+            d[k] = ['{}%'.format(owned), result[k], result[k]*(1/owned)/(n/100)/t]
         else:
             d[k] = (0, 0)
     r = pd.DataFrame.from_dict(d, orient='index', columns=['ownership', 'buyins_won', 'buyins_won/lineup/trial'])
     for k, v in lineups[2].items():
             print("{}: {}".format(k,v))
-    # normalize buyins_won/contest/lineup
-    num_owned = len(r.index)
-    raw_won = sum(r['buyins_won'])
-    #for i in range(num_owned):
-        #r['buyins_won'][i] = r['buyins_won'][i] * (num_owned / raw_won)
-    print(r)
+    print(r.sort_values('buyins_won/lineup/trial', ascending=False))
     print("Players owned in any lineup: {} out of {}".format(len(r.index), p))
     print("Buyins_won won by owned players: {}".format(sum(r['buyins_won'])))
 
