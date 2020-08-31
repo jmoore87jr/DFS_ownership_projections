@@ -17,7 +17,7 @@ start = time.time()
 
 n = 150 # number of lineups to generate
 p = 40 # number of random players to generate
-trials = 100 # number of GPP trials to run with the lineups you generated
+trials = 10000 # number of GPP trials to run with the lineups you generated
 
 lineups = lnps.optimize_lineups(p, n) # generate lineups. lineups[0] is preliminary df for re-rolling act_score, lineups[1] is full lineup, lineups[2] is players dict
 ### rename all these lineup returns into something friendly
@@ -110,7 +110,10 @@ def main(trials):
             d[k] = ['{}%'.format(round(owned, 2)), result[k], result[k] / (n*(t+1)*owned/100)]
         else:
             d[k] = (0, 0)
-    r = pd.DataFrame.from_dict(d, orient='index', columns=['ownership', 'buyins_won', 'buyins_won/lineup/trial'])
+    r = pd.DataFrame.from_dict(d, orient='index', columns=['ownership', 'buyins_won', 'buyins_won/lineup/trial']).fillna(0)
+    print(r.sort_values('buyins_won/lineup/trial', ascending=False))
+    r['value'] = [lineups[2][p][3] for p in r.index]
+    r['salary'] = [lineups[2][p][1] for p in r.index]
     for k, v in lineups[2].items():
             print("{}: {}".format(k,v))
     print(r.sort_values('buyins_won/lineup/trial', ascending=False))
