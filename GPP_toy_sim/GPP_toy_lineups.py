@@ -45,9 +45,6 @@ def generate_players(p):
             exp_ppd = (exp_pts / salary) * 1000
             players["p{}".format(i)] = [position, int(salary), round(exp_pts, 2), round(exp_ppd, 2), int(act_pts)]
             i += 1
-    print("Players: ")
-    for k in players.keys():
-        print("{}: {}".format(k, players[k]))
     return players
 
 def optimize_lineups(p, n):
