@@ -65,12 +65,38 @@ def optimize_lineups(p, n):
 
         # create decision variables
         player_lineup = [pl.LpVariable('p{}'.format(i), cat='Binary') for i in range(p)]
-
+        """PG = [pl.LpVariable('p{}'.format(i), cat='Binary') for i in range(p)]
+        SG = [pl.LpVariable('p{}'.format(i), cat='Binary') for i in range(p)]
+        SF = [pl.LpVariable('p{}'.format(i), cat='Binary') for i in range(p)]
+        PF = [pl.LpVariable('p{}'.format(i), cat='Binary') for i in range(p)]
+        C = [pl.LpVariable('p{}'.format(i), cat='Binary') for i in range(p)]
+        for i, pos in enumerate(players.keys()):
+            if players[pos][0] == 'PG':
+                PG[i] = 1
+            elif players[pos][0] == 'SG':
+                SG[i] = 1
+            elif players[pos][0] == 'SF':
+                SF[i] = 1
+            elif players[pos][0] == 'PF':
+                PF[i] = 1
+            elif players[pos][0] == 'C':
+                C[i] = 1"""
         # define constraints:
         # sum of the binary player_lineup == 8 players
         prob += (pl.lpSum(player_lineup[i] for i in range(p)) == 8)
         # salary <= 50000
         prob += (pl.lpSum(players['{}'.format(player_lineup[i])][1]*player_lineup[i] for i in range(p)) <= 50000)
+        # positions
+        """prob += (pl.lpSum(PG[i] for i in range(p)) >= 1)
+        prob += (pl.lpSum(PG[i] for i in range(p)) <= 3)
+        prob += (pl.lpSum(SG[i] for i in range(p)) >= 1)
+        prob += (pl.lpSum(SG[i] for i in range(p)) <= 3)
+        prob += (pl.lpSum(SF[i] for i in range(p)) >= 1)
+        prob += (pl.lpSum(SF[i] for i in range(p)) <= 3)
+        prob += (pl.lpSum(PF[i] for i in range(p)) >= 1)
+        prob += (pl.lpSum(PF[i] for i in range(p)) <= 3)
+        prob += (pl.lpSum(C[i] for i in range(p)) >= 1)
+        prob += (pl.lpSum(C[i] for i in range(p)) <= 2)"""
         # lineup projection less than the previous one
         if high_score:
             prob += (pl.lpSum(players['{}'.format(player_lineup[i])][2]*player_lineup[i] for i in range(p)) <= high_score - .01)
