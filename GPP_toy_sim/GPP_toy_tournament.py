@@ -8,12 +8,15 @@ import time
 # buyins_won/lineup/trial still wrong; right for 100 lineups but not 150
 # build in correlation
 
+# time for 20/40/10 without positions: 2.4029
+# time for 20/40/10 with position constraints: 
+
 start = time.time()
 
 
-n = 150 # number of lineups to generate
+n = 20 # number of lineups to generate
 p = 40 # number of random players to generate
-trials = 100000 # number of GPP trials to run with the lineups you generated
+trials = 10 # number of GPP trials to run with the lineups you generated
 
 lineups = lnps.optimize_lineups(p, n) # generate lineups. lineups[0] is preliminary df for re-rolling act_score, lineups[1] is full lineup, lineups[2] is players dict
 ### rename all these lineup returns into something friendly
@@ -102,8 +105,9 @@ def main(trials):
     d = defaultdict()
     for k, v in ownership.items():
         if k in result.keys():
-            owned = round((v/n)*100, 1)
-            d[k] = ['{}%'.format(owned), result[k], result[k]*(1/owned)/(n/100)/t]
+            owned = (v/n)*100
+            d[k] = ['{}%'.format(round(owned, 2)), result[k], result[k] / (n*(t+1)*owned/100)]
+            print("n: {}, t: {}, owned: {}".format(n, t, owned))
         else:
             d[k] = (0, 0)
     r = pd.DataFrame.from_dict(d, orient='index', columns=['ownership', 'buyins_won', 'buyins_won/lineup/trial'])
