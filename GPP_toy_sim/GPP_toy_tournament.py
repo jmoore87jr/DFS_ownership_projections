@@ -17,7 +17,7 @@ start = time.time()
 
 n = 150 # number of lineups to generate
 p = 40 # number of random players to generate
-trials = 10000 # number of GPP trials to run with the lineups you generated
+trials = 1000000 # number of GPP trials to run with the lineups you generated
 
 lineups = lnps.optimize_lineups(p, n) # generate lineups. lineups[0] is preliminary df for re-rolling act_score, lineups[1] is full lineup, lineups[2] is players dict
 ### rename all these lineup returns into something friendly
@@ -33,7 +33,6 @@ def reroll_act_pts(): # is this re-rolling same values (for one lineup) n times 
             roll = np.random.normal(exp, (0.37 - 0.0035*exp) * exp)
             act_score.append(roll)
         all_act_scores.append(sum(act_score))
-    print(all_act_scores)
     return all_act_scores
 
 
@@ -74,7 +73,6 @@ def calculate_player_winnings(): # add re-roll here
     lineups[1]['score'] = reroll_act_pts() # re-roll points and sort
     lineups[1] = lineups[1].sort_values('score', ascending=False)
     lineups[1]['payout'] = generate_prizepool(n) # add prizepool
-    print("After reroll and payout add: {}".format(lineups[1].head(11)))
     d = defaultdict()
     for i, lineup in enumerate(lineups[1]['lineup']):
         for plyr in lineup:
@@ -84,7 +82,6 @@ def calculate_player_winnings(): # add re-roll here
                 d[plyr] = lineups[1]['payout'][i]
             else:   
                 d[plyr] += lineups[1]['payout'][i]
-    print("Player winnings: {}".format(d))
     return d
 
 
@@ -102,7 +99,7 @@ def main(trials):
                     result[k] += v
                 else:
                     result[k] = v
-        print("Trial result: {}".format(result))
+        print("Trial {} complete.".format(t))
     d = defaultdict()
     for k, v in ownership.items():
         if k in result.keys():
