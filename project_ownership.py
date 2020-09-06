@@ -36,6 +36,8 @@ def generate_ceilings_lineups(n):
     for col in df.columns:
         df[col] = df[col].apply(lambda x: ' '.join(str(x).split()[:-2]))
     df.to_csv('ceilings_upload.csv')
+    exposure = df.stack().value_counts()
+    exposure.to_csv('exposure.csv')
     print(df)
     return df
 
@@ -128,10 +130,5 @@ def calculate_exposure(): # input site names separated by comma, in order rotogr
     print("Ownership projections saved.")
 
 #calculate_exposure()
-print(generate_ceilings_lineups(50))
+print(generate_ceilings_lineups(100))
 
-# add sabersim stdev column
-# test which weights work best
-# test which # of lineups works best
-# ownership %s need to be smoothed out; perhaps try a points/$ model?
-# people fade huge chalk some, but low-owned stars always get at least 5-10%

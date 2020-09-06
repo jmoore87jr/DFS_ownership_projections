@@ -4,6 +4,8 @@ from functools import reduce
 import scipy.stats as ss
 from collections import defaultdict
 
+# separate ceiling stuff into separate scripts
+
 
 sites = ['rotogrinders', 'awesemo', 'sabersim']
 
@@ -98,7 +100,8 @@ def format_and_save(ceil=False):
             print(f"{site} projections saved.")
 
 
-get_dk_salaries()
-format_and_save(ceil=True)
+#get_dk_salaries()
+#format_and_save(ceil=True)
+format_and_save()
 
 
