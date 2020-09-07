@@ -16,10 +16,10 @@ start = time.time()
 
 
 n = 150 # number of lineups to generate
-p = 40 # number of random players to generate
+p = 31 # number of random players to generate
 trials = 1000000 # number of GPP trials to run with the lineups you generated
 
-lineups = lnps.optimize_lineups(p, n) # generate lineups. lineups[0] is preliminary df for re-rolling act_score, lineups[1] is full lineup, lineups[2] is players dict
+lineups = lnps.optimize_lineups(p, n, random=False) # generate lineups. lineups[0] is preliminary df for re-rolling act_score, lineups[1] is full lineup, lineups[2] is players dict
 ### rename all these lineup returns into something friendly
 
 def reroll_act_pts(): # is this re-rolling same values (for one lineup) n times instead of diff for each lineup? yes

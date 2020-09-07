@@ -48,11 +48,32 @@ def generate_players(p):
             i += 1
     return players
 
-def optimize_lineups(p, n):
+def enter_players():
+    # import csv of players
+    # return dictionary {player: position, salary, exp_pts, value, act_pts}. calculate act_pts from stdev
+    df = pd.read_csv('ownership_projections.csv')
+    d = defaultdict()
+    stdev = df['pts'] * df['stdev/pts'] / 10
+    salary = df['salary']
+    value = df['value']
+    exp_pts = df['pts']
+    names = df['Unnamed: 0']
+    for i in range(len(df.index)): 
+        name = names[i].replace(' ', '_').replace('-', '_')
+        d[name] = ['none', salary[i], exp_pts[i], value[i], np.random.normal(exp_pts[i], stdev[i])]
+    return d
+
+def optimize_lineups(p, n, random=True):
     """Use pulp solver to find top n optimal lineups using exp_pts from p randomly generated players. Returns 
     DataFrame of the optimal lineups and their actual scores"""
 
-    players = generate_players(p)
+    if random:
+        players = generate_players(p)
+    else:
+        players = enter_players()
+
+    #for k in players.keys():
+        #print(k)
     
     high_score = 0
     lnps = defaultdict()
@@ -65,7 +86,7 @@ def optimize_lineups(p, n):
         solver = pl.PULP_CBC_CMD()
 
         # create decision variables
-        player_lineup = [pl.LpVariable('p{}'.format(i), cat='Binary') for i in range(p)]
+        player_lineup = [pl.LpVariable(player, cat='Binary') for player in players.keys()]
         """PG = [pl.LpVariable('p{}'.format(i), cat='Binary') for i in range(p)]
         SG = [pl.LpVariable('p{}'.format(i), cat='Binary') for i in range(p)]
         SF = [pl.LpVariable('p{}'.format(i), cat='Binary') for i in range(p)]
@@ -111,9 +132,12 @@ def optimize_lineups(p, n):
 
         # print results for each lineup
         d = defaultdict()
-        for i,plyr in enumerate(player_lineup):
+        print(players)
+        print(player_lineup)
+        for plyr in player_lineup:
+            print(plyr)
             if pl.value(plyr) == 1:
-                d['p{}'.format(i)] = players['p{}'.format(i)]
+                d[str(plyr)] = players[str(plyr)]
         results = pd.DataFrame.from_dict(d, orient='index', 
                 columns=['Position', 'Salary', 'exp_pts', 'exp_ppd', 'act_pts'])
         total_salary = sum(results['Salary'])
@@ -137,6 +161,7 @@ def optimize_lineups(p, n):
     print(result)
 
     return [results, result, players] # need to return more stuff from here in order to re-roll later and alter 'result'
+
 
 
 

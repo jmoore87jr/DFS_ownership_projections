@@ -26,3 +26,7 @@ awesemo_projections.csv
 pulp_playground.py
 own_predict.csv
 research/data_warehouse/
+ceilings.csv 
+ceilings_lineups.csv 
+ceilings_upload.csv
+exposure.csv 
