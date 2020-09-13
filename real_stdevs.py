@@ -1,8 +1,9 @@
 import numpy as np
 import pandas as pd
 from collections import defaultdict
+from functools import reduce
 
-# still can't figure out what drives stdev...do the whole nba
+# create separate function for scraping
 
 nuggets = ['Jamal Murray', 'Nikola Jokic', 'Jerami Grant', 'Gary Harris', 'Paul Millsap', 'Michael Porter Jr', 'Torrey Craig', 'Monte Morris', 'Mason Plumlee']
 clippers = ['Kawhi Leonard', 'Ivica Zubac', 'Marcus Morris', 'Paul George', 'Patrick Beverley', 'Louis Williams', 'Landry Shamet', 'Jamychal Green', 'Montrezl Harrell', 'Reggie Jackson']
@@ -13,10 +14,24 @@ celtics = ['Kemba Walker', 'Jayson Tatum', 'Jaylen Brown', 'Marcus Smart', 'Dani
 heat = ['Jimmy Butler', 'Goran Dragic', 'Jae Crowder', 'Bam Adebayo', 'Duncan Robinson', 'Tyler Herro', 'Kendrick Nunn', 'Andre Iguodala', 'Kelly Olynyk']
 bucks = ['Giannis Antetokounmpo', 'Khris Middleton', 'Brook Lopez', 'Eric Bledsoe', 'Wesley Matthews', 'Donte Divincenzo', 'George Hill', 'Marvin Williams', 'Pat Connaughton', 'Kyle Korver']
 
-players = nuggets + clippers + rockets + lakers + raptors + celtics + heat + bucks
+pacers = ['Domantas Sabonis', 'T J Warren', 'Malcolm Brogdon', 'Myles Turner', 'Victor Oladipo', 'Justin Holiday', 'Aaron Holiday', 'Doug Mcdermott', 'T J Mcconnell']
+sixers = ['Ben Simmons', 'Tobias Harris', 'Josh Richardson', 'Al Horford', 'Joel Embiid', 'Furkan Korkmaz', 'Alec Burks', 'Shake Milton', 'Matisse Thybulle']
+nets = ['Spencer Dinwiddie', 'Joe Harris', 'Caris Levert', 'Garrett Temple', 'Jarrett Allen', 'Tyler Johnson']
+magic = ['Markelle Fultz', 'Terrence Ross', 'Evan Fournier', 'Nikola Vucevic', 'Aaron Gordon', 'Jonathan Isaac', 'D J Augustin']
+thunder = ['Shai Gilgeous Alexander', 'Chris Paul', 'Dennis Schroder', 'Danilo Gallinari', 'Steven Adams', 'Luguentz Dort', 'Terrance Ferguson', 'Darius Bazley', 'Nerlens Noel']
+jazz = ['Rudy Gobert', 'Donovan Mitchell', 'Bojan Bogdanovic', 'Joe Ingles', 'Mike Conley', 'Royce Oneale', 'Jordan Clarkson', 'Emmanuel Mudiay', 'Georges Niang']
+mavericks = ['Luka Doncic', 'Kristaps Porzingis', 'Dorian Finney Smith', 'Tim Hardaway', 'Dwight Powell', 'Maxi Kleber', 'Seth Curry', 'Delon Wright', 'Boban Marjanovic']
+blazers = ['Damian Lillard', 'C J Mccollum', 'Trevor Ariza', 'Carmelo Anthony', 'Hassan Whiteside', 'Gary Trent', 'Anfernee Simons', 'Mario Hezonja']
 
+#players = nuggets + clippers + rockets + lakers + raptors + celtics + heat + bucks
+#players = pacers + sixers + nets + magic + thunder + jazz + mavericks + blazers
+#players = ['Kyle Lowry', 'Fred Vanvleet', 'OG Anunoby', 'Pascal Siakam', 'Marc Gasol']
+#players = ['Jamal Murray', 'Nikola Jokic', 'Jerami Grant', 'Paul Millsap', 'Michael Porter Jr']
+#players = ['Kemba Walker', 'Marcus Smart', 'Jaylen Brown', 'Jayson Tatum', 'Daniel Theis']
+#players = ['Patrick Beverley', 'Paul George', 'Kawhi Leonard', 'Marcus Morris', 'Ivica Zubac']
+players = ['James Harden', 'Russell Westbrook', 'Robert Covington', 'P J Tucker']
 
-def import_fpts():
+def aggregate_stats():
     d = defaultdict()
     d2 = defaultdict()
     for player in players:
@@ -84,4 +99,42 @@ def import_fpts():
 
     return [df, df2]
 
-import_fpts()
+def correlation():
+    d = defaultdict()
+    for player in players:
+        print(player)
+        p = player.replace(' ', '-').lower()
+        url = 'https://www.numberfire.com/nba/players/daily-fantasy/{}'.format(p)
+        try:
+            dfs = pd.read_html(url)
+        except ImportError:
+            print("Import error for {}; check player name.".format(player))
+            continue
+        if len(dfs) == 4:
+            df = pd.read_html(url)[3].dropna()
+            dates = pd.read_html(url)[2].Date.dropna() 
+        elif len(dfs) == 2:
+            df = pd.read_html(url)[1].dropna()
+            dates = pd.read_html(url)[0].Date.dropna()
+        else:
+            print("list of dfs length is wrong for {}; check web page.".format(player))
+            continue
+        df['Date'] = dates
+        df = df[['Date', 'FP']]
+        print(df.head())
+        print(df.info())
+        d[player] = df
+
+    frames = [frame for frame in d.values()]
+    result = reduce(lambda left,right: pd.merge(left,right,on='Date'), frames)
+    cols = [p for p in d.keys()]
+    cols.insert(0, 'Date')
+    result.columns = cols
+    print(result)
+    print(result.corr())
+    print("{} observations.".format(len(result.index)))
+    result.corr().to_csv('team_corr.csv')
+
+
+#aggregate_stats()
+correlation()
