@@ -58,9 +58,12 @@ def enter_players():
     value = df['value']
     exp_pts = df['pts']
     names = df['Unnamed: 0']
+    position = df['position']
+    # how do I deal with multiple positions?
     for i in range(len(df.index)): 
+        pos = position[i].split('/')[0]
         name = names[i].replace(' ', '_').replace('-', '_')
-        d[name] = ['none', salary[i], exp_pts[i], value[i], np.random.normal(exp_pts[i], stdev[i])]
+        d[name] = [pos, salary[i], exp_pts[i], value[i], np.random.normal(exp_pts[i], stdev[i])]
     return d
 
 def optimize_lineups(p, n, random=True):
@@ -71,9 +74,6 @@ def optimize_lineups(p, n, random=True):
         players = generate_players(p)
     else:
         players = enter_players()
-
-    #for k in players.keys():
-        #print(k)
     
     high_score = 0
     lnps = defaultdict()
@@ -86,56 +86,34 @@ def optimize_lineups(p, n, random=True):
         solver = pl.PULP_CBC_CMD()
 
         # create decision variables
-        player_lineup = [pl.LpVariable(player, cat='Binary') for player in players.keys()]
-        """PG = [pl.LpVariable(player, cat='Binary') for player in players.keys()]
-        SG = [pl.LpVariable(player, cat='Binary') for player in players.keys()]
-        SF = [pl.LpVariable(player, cat='Binary') for player in players.keys()]
-        PF = [pl.LpVariable(player, cat='Binary') for player in players.keys()]
-        C = [pl.LpVariable(player, cat='Binary') for player in players.keys()]
-        for i, pos in enumerate(players.keys()):
-            if players[pos][0] == 'PG':
-                PG[i] = 1
-            elif players[pos][0] == 'SG':
-                SG[i] = 1
-            elif players[pos][0] == 'SF':
-                SF[i] = 1
-            elif players[pos][0] == 'PF':
-                PF[i] = 1
-            elif players[pos][0] == 'C':
-                C[i] = 1"""
+        player_position = [pl.LpVariable(plyr, cat='Binary') for i,plyr in enumerate(players.keys())]
         # define constraints:
-        # sum of the binary player_lineup == 8 players
-        prob += (pl.lpSum(player_lineup[i] for i in range(p)) == 8)
         # salary <= 50000
-        prob += (pl.lpSum(players['{}'.format(player_lineup[i])][1]*player_lineup[i] for i in range(p)) <= 50000)
+        prob += (pl.lpSum(players['{}'.format(player_position[i])][1]*player_position[i] for i in range(p)) <= 50000)
         # positions
-        """prob += (pl.lpSum(PG[i] for i in range(p)) >= 1)
-        prob += (pl.lpSum(PG[i] for i in range(p)) <= 3)
-        prob += (pl.lpSum(SG[i] for i in range(p)) >= 1)
-        prob += (pl.lpSum(SG[i] for i in range(p)) <= 3)
-        prob += (pl.lpSum(SF[i] for i in range(p)) >= 1)
-        prob += (pl.lpSum(SF[i] for i in range(p)) <= 3)
-        prob += (pl.lpSum(PF[i] for i in range(p)) >= 1)
-        prob += (pl.lpSum(PF[i] for i in range(p)) <= 3)
-        prob += (pl.lpSum(C[i] for i in range(p)) >= 1)
-        prob += (pl.lpSum(C[i] for i in range(p)) <= 2)"""
+        positions = ['PG', 'SG', 'SF', 'PF', 'C']
+        maxes = {'PG': 3, 'SG': 3, 'SF': 3, 'PF': 3, 'C': 2}
+        mins = {'PG': 1, 'SG': 1, 'SF': 1, 'PF': 1, 'C': 1}
+        for position in positions:
+            # sum of binary variable for each position is >= min and <= max
+            prob += (pl.lpSum(player_position[i] for i in range(p) if players[str(player_position[i])][0] == position) >= mins[position])
+            prob += (pl.lpSum(player_position[i] for i in range(p) if players[str(player_position[i])][0] == position) <= maxes[position])
+        # number of players == 8
+        prob += (pl.lpSum(player_position[i] for i in range(p)) == 8)
         # lineup projection less than the previous one
         if high_score:
-            prob += (pl.lpSum(players['{}'.format(player_lineup[i])][2]*player_lineup[i] for i in range(p)) <= high_score - .01)
+            prob += (pl.lpSum(players['{}'.format(player_position[i])][2]*player_position[i] for i in range(p)) <= high_score - .01)
 
         # define objective function:
-        # maximize sum of expected_points * player_lineup (binary)
-        prob += pl.lpSum(players['{}'.format(player_lineup[i])][2]*player_lineup[i] for i in range(p))
+        # maximize sum of expected_points * player_position (binary)
+        prob += pl.lpSum(players['{}'.format(player_position[i])][2]*player_position[i] for i in range(p))
 
         # solve
         prob.solve(solver)
 
         # print results for each lineup
         d = defaultdict()
-        print(players)
-        print(player_lineup)
-        for plyr in player_lineup:
-            print(plyr)
+        for plyr in player_position:
             if pl.value(plyr) == 1:
                 d[str(plyr)] = players[str(plyr)]
         results = pd.DataFrame.from_dict(d, orient='index', 
@@ -147,6 +125,9 @@ def optimize_lineups(p, n, random=True):
         print("Total Salary: {}".format(total_salary))
         print("Expected score: {}".format(exp_score))
         print("Actual score: {}".format(act_score))
+        for plyr in player_position:
+            if pl.value(plyr) == 1:
+                print(plyr) # player_lineup and player_position aren't talking to each other during the optimization!
 
         # set high_score
         high_score = sum(results['exp_pts'])
@@ -160,9 +141,12 @@ def optimize_lineups(p, n, random=True):
         print("{}: {}".format(k, players[k]))
     print(result)
 
+    #print(position_constraints)
+    #print(type(position_constraints['PG']))
+
     return [results, result, players] # need to return more stuff from here in order to re-roll later and alter 'result'
 
-
+optimize_lineups(30,5, random=True)
 
 
 
