@@ -64,6 +64,17 @@ def get_player_salaries():
         d[name] = int(salary)
     return d
 
+def get_positions():
+    # list each player once for each position, then add constraint where you can't play same player > 1 time in a lineup
+    ###still needs work
+    df = pd.read_csv('sabersim_projections.csv')
+    df = df[['Name', 'Position']]
+    d = defaultdict()
+    for name, pos in zip(df['Name'], df['Position']):
+        d[name] = pos
+    print(d)
+    return d
+
 def get_stdev():
     df = pd.read_csv('sabersim_raw.csv').fillna(0)
     df = df[['Name', 'dk_std']]
@@ -72,19 +83,24 @@ def get_stdev():
         d[name] = round(std, 1)
     return d
 
+def real_stdev():
+    pass
+
 def calculate_exposure(): # input site names separated by comma, in order rotogrinders, fantasylabs, numberfire, sabersim
     n = int(input("Enter the number of lineups to generate for each site: "))
     projections = get_player_projections()
     salaries = get_player_salaries()
     stdev = get_stdev()
+    # add positions, manipulate into dictionary
+    positions = get_positions()
     # calculate ownership projections
     exposures = []
     for site in sites:
         df = generate_lineups(site, n)
-        positions = ['PG', 'SG', 'SF', 'PF', 'C', 'G', 'F', 'UTIL']
+        pstns = ['PG', 'SG', 'SF', 'PF', 'C', 'G', 'F', 'UTIL']
         counts = df['PG'].value_counts().to_frame()
         # join all the positions on player name so they can be summed
-        for pos in positions[1:]:
+        for pos in pstns[1:]:
             series = df[pos].value_counts().to_frame()
             counts = counts.join(series, how='outer').fillna(0)
         # create and fill the exposure column
@@ -112,23 +128,29 @@ def calculate_exposure(): # input site names separated by comma, in order rotogr
     d3 = defaultdict(int)
     for name in d2.keys(): # strip names so they match projections
         stripped_name = ' '.join(name.split()[:-2])
+        print(positions)
+        try:
+            pos = positions[stripped_name]
+        except KeyError:
+            print("Name error for {}".format(stripped_name))
+            continue # am I missing a bunch of players here?
         proj = projections[stripped_name]
         sal = salaries[stripped_name]
         val = projections[stripped_name] / (salaries[stripped_name]+0.1) * 1000
         std = stdev[stripped_name]
         ceil = ss.norm(projections[stripped_name], stdev[stripped_name]).ppf(0.9)
-        d3[stripped_name] = [round(d2[name], 2), round(val, 2), round(proj, 2), sal, 
+        d3[stripped_name] = [pos, round(d2[name], 2), round(val, 2), round(proj, 2), sal, 
                             round(std / (proj+0.1) * 10, 2), round(ceil, 2),
                             round(ceil / sal * 1000, 2)]
     # convert back into DataFrame
     results = pd.DataFrame.from_dict(d3, orient='index', 
-              columns=['lineup_%', 'value', 'pts', 'salary', 'stdev/pts', 'ceiling', 'ceiling value']).sort_values(by=['lineup_%'], 
+              columns=['position', 'lineup_%', 'value', 'pts', 'salary', 'stdev/pts', 'ceiling', 'ceiling value']).sort_values(by=['lineup_%'], 
               ascending=False)
     results['projected_ownership'] = round(-0.196651 + results['lineup_%']*0.160766 + results['value']*0.048588 + results['salary']*0.000013, 2)
     print(results)
     results.to_csv('ownership_projections.csv')
     print("Ownership projections saved.")
 
-#calculate_exposure()
-print(generate_ceilings_lineups(100))
-
+calculate_exposure()
+#print(generate_ceilings_lineups(100))
+#get_positions()

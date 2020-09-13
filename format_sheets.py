@@ -62,18 +62,19 @@ def get_stdev():
 def average_projections():
     # average the projections from the sites and make ceilings column
     # should probably pass site and go site by site
-    ssim = format_sabersim_projections()
-    rg = format_rotogrinders_projections()
-    aw = format_awesemo_projections()
+    dfs = []
+    for site in sites:
+        get_func = globals()["format_" + site + "_projections"]
+        dfs.append(get_func())
     std = get_stdev()
-    dfs = [ssim, rg, aw]
     df = reduce(lambda left, right: pd.merge(left, right, on='Player'), dfs)
     stds = []
     means = []
     ceils = []
     for i,p in enumerate(df['Player']):
         stds.append(std[p])
-        means.append(np.mean([df['FPts_x'][i], df['FPts_y'][i], df['FPts'][i]]))
+        #means.append(np.mean([df['FPts_x'][i], df['FPts_y'][i], df['FPts'][i]]))
+        means.append(np.mean([df['FPts_x'][i], df['FPts_y'][i]]))
         ceils.append(ss.norm(means[i], std[p]).ppf(0.9))
     df['means'] = means
     df['std'] = stds 
@@ -100,8 +101,8 @@ def format_and_save(ceil=False):
             print(f"{site} projections saved.")
 
 
-#get_dk_salaries()
-#format_and_save(ceil=True)
-format_and_save()
+get_dk_salaries()
+format_and_save(ceil=False)
+format_and_save(ceil=True)
 
 

@@ -87,11 +87,11 @@ def optimize_lineups(p, n, random=True):
 
         # create decision variables
         player_lineup = [pl.LpVariable(player, cat='Binary') for player in players.keys()]
-        """PG = [pl.LpVariable('p{}'.format(i), cat='Binary') for i in range(p)]
-        SG = [pl.LpVariable('p{}'.format(i), cat='Binary') for i in range(p)]
-        SF = [pl.LpVariable('p{}'.format(i), cat='Binary') for i in range(p)]
-        PF = [pl.LpVariable('p{}'.format(i), cat='Binary') for i in range(p)]
-        C = [pl.LpVariable('p{}'.format(i), cat='Binary') for i in range(p)]
+        """PG = [pl.LpVariable(player, cat='Binary') for player in players.keys()]
+        SG = [pl.LpVariable(player, cat='Binary') for player in players.keys()]
+        SF = [pl.LpVariable(player, cat='Binary') for player in players.keys()]
+        PF = [pl.LpVariable(player, cat='Binary') for player in players.keys()]
+        C = [pl.LpVariable(player, cat='Binary') for player in players.keys()]
         for i, pos in enumerate(players.keys()):
             if players[pos][0] == 'PG':
                 PG[i] = 1
@@ -161,6 +161,7 @@ def optimize_lineups(p, n, random=True):
     print(result)
 
     return [results, result, players] # need to return more stuff from here in order to re-roll later and alter 'result'
+
 
 
 
