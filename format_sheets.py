@@ -9,6 +9,7 @@ from collections import defaultdict
 
 sites = ['rotogrinders', 'awesemo', 'sabersim']
 
+
 def get_dk_salaries(): # user inputs DK export URL for a slate, .csv is downloaded
     url = input("Enter the DraftKings export URL for your slate: ")
     df = pd.read_csv(url)
@@ -51,11 +52,16 @@ def merge_projections_to_DK(site):
     new_sheet.drop(['Player', 'FPts'], axis=1, inplace=True)
     return new_sheet 
 
-def get_stdev():
-    df = pd.read_csv('sabersim_raw.csv').fillna(0)
+def get_stdev(): # change to use my stdev numbers
+    """df = pd.read_csv('sabersim_raw.csv').fillna(0)
     df = df[['Name', 'dk_std']]
     d = defaultdict(int)
     for name, std in zip(df['Name'], df['dk_std']):
+        d[name] = round(std, 1)"""
+    df = pd.read_csv('stdevs.csv').fillna(0)
+    df = df[['Name', 'Std']]
+    d = defaultdict(int)
+    for name, std in zip(df['Name'], df['Std']):
         d[name] = round(std, 1)
     return d
 
@@ -73,9 +79,10 @@ def average_projections():
     ceils = []
     for i,p in enumerate(df['Player']):
         stds.append(std[p])
-        #means.append(np.mean([df['FPts_x'][i], df['FPts_y'][i], df['FPts'][i]]))
-        means.append(np.mean([df['FPts_x'][i], df['FPts_y'][i]]))
-        ceils.append(ss.norm(means[i], std[p]).ppf(0.9))
+        means.append(np.mean([df['FPts_x'][i], df['FPts_y'][i], df['FPts'][i]]))
+        #means.append(np.mean([df['FPts_x'][i], df['FPts_y'][i]]))
+        #means.append(np.mean([df['FPts'][i]]))
+        ceils.append(ss.norm(means[i], std[p]).ppf(0.95))
     df['means'] = means
     df['std'] = stds 
     df['ceil'] = ceils

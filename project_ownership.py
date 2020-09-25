@@ -152,5 +152,4 @@ def calculate_exposure(): # input site names separated by comma, in order rotogr
     print("Ownership projections saved.")
 
 calculate_exposure()
-#print(generate_ceilings_lineups(100))
-#get_positions()
+print(generate_ceilings_lineups(100))
