@@ -1,11 +1,8 @@
 """Generate fake players and prize structure, figure out how to optimize x lineups
 and run n trials. Store % of lineups each player is in. Calculate $/lineup for each 
-player. WRITE A PLAN FOR HOW TO DO THIS BEFORE STARTING"""
+player"""
 
 # Plan:
-  # seems like the good lineups are winning too much...I think I either don't use int() for scores or I increase player variance
-  # this could be a good time to use classes
-  # i'm not using positions - this will make optimization faster and it doesn't matter for toy game purposes
   # use random with list comp to generate dict of {player: [salary, expected_points, actual_points]}
     # can also use random to make sure I have some players with expected pts/$ 6 and some with 4
     # add ownership % to dict.values after simulating lineups
@@ -61,9 +58,10 @@ def enter_players():
     position = df['position']
     # how do I deal with multiple positions?
     for i in range(len(df.index)): 
-        pos = position[i].split('/')[0]
-        name = names[i].replace(' ', '_').replace('-', '_')
-        d[name] = [pos, salary[i], exp_pts[i], value[i], np.random.normal(exp_pts[i], stdev[i])]
+        positions = position[i].split('/')
+        for pos in positions: # dealing with players with multiple positions 
+            name = pos + "_" + names[i].replace(' ', '_').replace('-', '_')
+            d[name] = [pos, salary[i], exp_pts[i], value[i], np.random.normal(exp_pts[i], stdev[i])]
     return d
 
 def optimize_lineups(p, n, random=True):
@@ -74,6 +72,7 @@ def optimize_lineups(p, n, random=True):
         players = generate_players(p)
     else:
         players = enter_players()
+        p = len(players)
     
     high_score = 0
     lnps = defaultdict()
@@ -87,6 +86,7 @@ def optimize_lineups(p, n, random=True):
 
         # create decision variables
         player_position = [pl.LpVariable(plyr, cat='Binary') for i,plyr in enumerate(players.keys())]
+
         # define constraints:
         # salary <= 50000
         prob += (pl.lpSum(players['{}'.format(player_position[i])][1]*player_position[i] for i in range(p)) <= 50000)
@@ -100,6 +100,10 @@ def optimize_lineups(p, n, random=True):
             prob += (pl.lpSum(player_position[i] for i in range(p) if players[str(player_position[i])][0] == position) <= maxes[position])
         # number of players == 8
         prob += (pl.lpSum(player_position[i] for i in range(p)) == 8)
+        # no duplicate players
+        stripped_names = [' '.join(str(p).split('_')[-2:]) for p in player_position]
+        for name in stripped_names:
+            prob += (pl.lpSum(player_position[i] for i in range(p) if ' '.join(str(player_position[i]).split('_')[-2:]) == name) <= 1)
         # lineup projection less than the previous one
         if high_score:
             prob += (pl.lpSum(players['{}'.format(player_position[i])][2]*player_position[i] for i in range(p)) <= high_score - .01)
@@ -113,7 +117,7 @@ def optimize_lineups(p, n, random=True):
 
         # print results for each lineup
         d = defaultdict()
-        for plyr in player_position:
+        for plyr in player_position: # turn into dict comp
             if pl.value(plyr) == 1:
                 d[str(plyr)] = players[str(plyr)]
         results = pd.DataFrame.from_dict(d, orient='index', 
@@ -141,13 +145,9 @@ def optimize_lineups(p, n, random=True):
         print("{}: {}".format(k, players[k]))
     print(result)
 
-    #print(position_constraints)
-    #print(type(position_constraints['PG']))
+    return [results, result, players] 
 
-    return [results, result, players] # need to return more stuff from here in order to re-roll later and alter 'result'
-
-optimize_lineups(30,5, random=True)
-
+#print(optimize_lineups(20, 40, random=False))
 
 
 

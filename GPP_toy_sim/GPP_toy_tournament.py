@@ -4,20 +4,18 @@ from collections import defaultdict
 import GPP_toy_lineups as lnps
 import time
 
+# value is wrong at the end but everything else is right?
+# how to build lineups with exposure mirroring pOWN?
+# output ownership projection and create differentiation metric (%-based)
 # comment calculate_player_winnings() and main()
-# buyins_won/lineup/trial still wrong; right for 100 lineups but not 150
 # build in correlation
-
-# time for 20/40/10 without positions: 2.4029
-# time for 150/40/1000 without positions: 34.9699
-# time for 20/40/10 with position constraints: 
 
 start = time.time()
 
 
-n = 100 # number of lineups to generate
-p = 27 # number of ball players
-trials = 200000 # number of GPP trials to run with the lineups you generated
+n = 50 # number of lineups to generate
+p = 39 # number of ball players
+trials = 1000000 # number of GPP trials to run with the lineups you generated
 
 lineups = lnps.optimize_lineups(p, n, random=False) # generate lineups. lineups[0] is preliminary df for re-rolling act_score, lineups[1] is full lineup, lineups[2] is players dict
 ### rename all these lineup returns into something friendly
@@ -74,6 +72,8 @@ def calculate_player_winnings(): # add re-roll here
     lineups[1] = lineups[1].sort_values('score', ascending=False)
     lineups[1]['payout'] = generate_prizepool(n) # add prizepool
     d = defaultdict()
+    d2 = defaultdict()
+    lineup_names = list(lineups[1].index)
     for i, lineup in enumerate(lineups[1]['lineup']):
         for plyr in lineup:
             if lineups[1]['payout'][i] == 0:
@@ -82,40 +82,64 @@ def calculate_player_winnings(): # add re-roll here
                 d[plyr] = lineups[1]['payout'][i]
             else:   
                 d[plyr] += lineups[1]['payout'][i]
-    return d
+        if lineups[1]['payout'][i] == 0:
+            break 
+        if lineup_names[i] not in d2.keys():
+            d2[lineup_names[i]] = lineups[1]['payout'][i]
+        else:
+            d2[lineup_names[i]] += lineups[1]['payout'][i]
+        # store lineup winnings in d2
+    return (d, d2)
 
 
 def main(trials):
     """get player EVs over [trials] trials and average them"""
     ownership = calculate_player_ownership()
-    result = defaultdict()
+    result = defaultdict() # players
+    result2 = defaultdict() # lineups
     for t in range(trials):
         winnings = calculate_player_winnings()
-        if not result:
-            result = winnings
+        if not result: # store player winnings
+            result = winnings[0]
         else:
-            for k, v in winnings.items():
+            for k, v in winnings[0].items():
                 if k in result.keys():
                     result[k] += v
                 else:
                     result[k] = v
+        if not result2: # store lineup winnings
+            result2 = winnings[1]
+        else:
+            for k, v in winnings[1].items():
+                if k in result2.keys():
+                    result2[k] += v
+                else:
+                    result2[k] = v
         print("Trial {} complete.".format(t))
-    d = defaultdict()
-    for k, v in ownership.items():
+    d = defaultdict() # players
+    d2 = defaultdict() # lineups
+    for k, v in ownership.items(): # players
         if k in result.keys():
             owned = (v/n)*100
             d[k] = ['{}%'.format(round(owned, 2)), result[k], result[k] / (n*(t+1)*owned/100)]
         else:
             d[k] = (0, 0)
-    r = pd.DataFrame.from_dict(d, orient='index', columns=['ownership', 'buyins_won', 'buyins_won/lineup/trial']).fillna(0)
-    print(r.sort_values('buyins_won/lineup/trial', ascending=False))
+    for k in result2.keys(): # lineups
+        d2[k] = [lineups[1].lineup[k], result2[k]]
+    r = pd.DataFrame.from_dict(d, orient='index', columns=['ownership', 'buyins_won', 'buyins_won/lineup/trial']).fillna(0) # players
+    r2 = pd.DataFrame.from_dict(d2, orient='index', columns=['lineup', 'winnings']) # lineups
     r['value'] = [lineups[2][p][3] for p in r.index]
     r['salary'] = [lineups[2][p][1] for p in r.index]
     for k, v in lineups[2].items():
             print("{}: {}".format(k,v))
     print(r.sort_values('buyins_won/lineup/trial', ascending=False))
+    print(r2.sort_values('winnings', ascending=False))
+    r2.to_csv('lineups_winnings.csv') # lineups
+    # lineups DK format, sort by position then remove prefixes
     print("Players owned in any lineup: {} out of {}".format(len(r.index), p))
     print("Buyins_won won by owned players: {}".format(sum(r['buyins_won'])))
+    # add total lineup winnings
+    # add positions to r
 
 main(trials)
 end = time.time()
