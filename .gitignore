@@ -34,3 +34,8 @@ exposure.csv
 playoff_player_stats.csv 
 playoff_players.csv 
 team_corr.csv 
+stdevs.csv 
+stdevs.csv:Zone.Identifier
+GPP_toy_sim/lineups_winnings.csv
+GPP_toy_sim/ownership_projections.csv:Zone.Identifier
+ownership_projections.csv:Zone.Identifier
